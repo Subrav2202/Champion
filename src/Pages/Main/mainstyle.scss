@@ -1,0 +1,39 @@
+$card-padding:10px;
+
+.heading {
+  text-align: center;
+  color: palevioletred;
+  font-family:"Dancing Script", cursive;
+}
+.headerwrap {
+  display: flex;
+  width:auto;
+  height: 70vh;
+  justify-content:center;
+}
+.cardimage {
+  width: 5vw;
+  height: 40vh;
+  position:relative;
+  opacity: 0.5;
+  padding:$card-padding;
+  background-color: white;
+  border: 1px solid rgb(128, 128, 128) !important;
+  transition: all 1s ease-in;
+  animation:  cardmove 10s ease forwards;
+  box-sizing:content-box;
+}
+
+@keyframes cardmove {
+  from {transform: translate3d(-350px,-350px,-350px)}
+  /* to {transform: translate3d(50%,10px,10px)} */
+}  
+.cardimage:hover{
+  width:10vw;
+  height:50vh;
+  opacity:1;
+}
+.cardwrap {
+  border:none;
+  margin:10px
+}

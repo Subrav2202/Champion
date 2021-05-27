@@ -1,0 +1,22 @@
+.colwrapper{
+    display:flex;
+    align-items: center;
+    height:100vh;
+}
+.formwrapper{
+    margin:auto;
+    padding:20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width:80%;
+    height:80%;
+}
+.icon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer{
+    display:flex;
+    justify-content:space-between
+}
