@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import Main from "./Pages/Main/Index"
 import Register  from "./Pages/Register/register"
+import Profile from "./Pages/Profile/Profile"
 import {
   BrowserRouter,
   Switch,
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/"><Main/></Route>
         <Route exact path="/register"><Register/></Route>
+        <Route exact path="/profile"><Profile/></Route>
       </Switch>
     </div>
     </BrowserRouter>

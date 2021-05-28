@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import "./regstyle.scss";
+import "./regStyle.scss";
 import lock from "./lock.png";
 import champion from "./champ.jpg"
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {  useDispatch } from 'react-redux'
-import {postUsersSuccess} from "../../Storage/Actions"
+import { useHistory } from "react-router-dom";
 
 function Register() {
-  const dispatch = useDispatch()
+  const history = useHistory()
   const [isregistered, setisregistered] = useState(true);
   const [rememberMe,setRememberMe] = useState("unchecked")
   const [loginValues, setLoginValues] = useState({
@@ -28,7 +27,6 @@ function Register() {
       ...loginValues,
       [e.target.name]: value
     })
-    dispatch(postUsersSuccess(loginValues))
   }
 
   const handleLoginSubmit = (e) => {
@@ -46,6 +44,7 @@ function Register() {
   const handleRegisterSubmit = (e) => {
     e.preventDefault()
     alert("Registered!!")
+    history.push("/profile")
   }
   
   const handleRememberMe = (e) => {
