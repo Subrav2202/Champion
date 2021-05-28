@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function Register() {
   const [isregistered, setisregistered] = useState(true);
+  const [rememberMe,setRememberMe] = useState("unchecked")
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
@@ -21,7 +22,7 @@ function Register() {
     const value = e.target.value;
     setLoginValues({
       ...loginValues,
-      [e.target.name]: value,
+      [e.target.name]: value
     })
   }
 
@@ -41,10 +42,12 @@ function Register() {
     e.preventDefault()
     alert("Registered!!")
   }
-
-  const checkboxFunc = (e) => {
-    console.log(e)
+  
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked ? "checked" : "unchecked")
   }
+
+
   return (
     <Container fluid className="wrapper">
       <Row>
@@ -72,7 +75,7 @@ function Register() {
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check name="rememberme" type="checkbox" label="Remember Me !!" onChange={handleLogin}/>
+                  <Form.Check name="rememberme" type="checkbox" label="Remember Me !!" onChange={handleRememberMe}/>
                 </Form.Group>
                 <br></br>
                 <hr />
