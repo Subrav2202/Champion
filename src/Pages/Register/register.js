@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./regstyle.scss";
 import lock from "./lock.png";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button,InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Register() {
@@ -42,7 +42,7 @@ function Register() {
     e.preventDefault()
     alert("Registered!!")
   }
-  
+
   const handleRememberMe = (e) => {
     setRememberMe(e.target.checked ? "checked" : "unchecked")
   }
@@ -72,6 +72,11 @@ function Register() {
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control name="password" value={loginValues.password} type="password" placeholder="Password" onChange={handleLogin} />
+                  <InputGroup.Prepend>
+                      <InputGroup.Text>
+                          <FontAwesomeIcon icon="search" />
+                      </InputGroup.Text>
+                  </InputGroup.Prepend>
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="formBasicCheckbox">
