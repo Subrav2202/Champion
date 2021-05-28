@@ -4,8 +4,11 @@ import lock from "./lock.png";
 import champion from "./champ.jpg"
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {  useDispatch } from 'react-redux'
+import {postUsersSuccess} from "../../Storage/Actions"
 
 function Register() {
+  const dispatch = useDispatch()
   const [isregistered, setisregistered] = useState(true);
   const [rememberMe,setRememberMe] = useState("unchecked")
   const [loginValues, setLoginValues] = useState({
@@ -25,6 +28,7 @@ function Register() {
       ...loginValues,
       [e.target.name]: value
     })
+    dispatch(postUsersSuccess(loginValues))
   }
 
   const handleLoginSubmit = (e) => {
