@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Axios from "axios";
-import "./mainstyle.scss";
-import { gsap } from "gsap";
+import "./mainStyle.scss";
+// import { gsap } from "gsap";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import Loader from "react-loader-spinner";
 import Navbar from "../Navigation/Navbar"

@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import "./navstyle.scss";
+import "./navStyle.scss";
 
 function Navbar() {
   const history = useHistory()
