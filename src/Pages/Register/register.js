@@ -21,18 +21,18 @@ function Register() {
     confirmpassword: ""
   })
 
-  const handleLogin = (e) => {
-    const value = e.target.value;
-    setLoginValues({
-      ...loginValues,
-      [e.target.name]: value
-    })
-  }
+    const handleLogin = (e) => {
+        const value = e.target.value;
+        setLoginValues({
+            ...loginValues,
+            [e.target.name]: value,
+        });
+    };
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault()
-    alert("Logged In")
-  }
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        alert("Logged In");
+    };
 
   const handleRegister = (e) => {
     const value = e.target.value;
@@ -51,6 +51,9 @@ function Register() {
     setRememberMe(e.target.checked ? "checked" : "unchecked")
   }
 
+    const handleRememberMe = (e) => {
+        setRememberMe(e.target.checked ? "checked" : "unchecked");
+    };
 
   return (
     <Container fluid className="wrapper">
