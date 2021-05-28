@@ -20,12 +20,12 @@ $card-padding:10px;
   background-color: white;
   border: 1px solid rgb(128, 128, 128) !important;
   transition: all 1s ease-in;
-  animation:  cardmove 10s ease forwards;
+  animation:  cardmove 5s ease-out forwards;
   box-sizing:content-box;
 }
 
 @keyframes cardmove {
-  from {transform: translate3d(-350px,-350px,-350px)}
+  from {transform: translate(0,-350px)}
   /* to {transform: translate3d(50%,10px,10px)} */
 }  
 .cardimage:hover{
