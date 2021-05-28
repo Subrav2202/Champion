@@ -6,7 +6,7 @@ import "./navstyle.scss";
 function Navbar() {
   const history = useHistory()
   const clickHandler = () => {
-    history.push("/Register")
+    history.push("/register")
   };
   return (
     <div className="navigation">

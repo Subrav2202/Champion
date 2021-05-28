@@ -1,6 +1,7 @@
 .colwrapper{
     display:flex;
     align-items: center;
+    justify-content: center;
     height:100vh;
 }
 .formwrapper{
@@ -19,4 +20,27 @@
 .footer{
     display:flex;
     justify-content:space-between
+}
+.champs{
+    width:auto;
+    height:50vh
+}
+.champwrapper{ 
+    height:80vh;
+    position:relative;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+.champbody{
+    font-family: "Dancing Script", cursive;
+    color: palevioletred;
+    font-size:x-large;
 }
