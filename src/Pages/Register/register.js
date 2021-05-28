@@ -7,6 +7,47 @@ import { Link } from "react-router-dom";
 
 function Register() {
   const [isregistered, setisregistered] = useState(true);
+  const [rememberMe,setRememberMe] = useState("unchecked")
+  const [loginValues, setLoginValues] = useState({
+    email: "",
+    password: "",
+    rememberme: ""
+  })
+  const [registerValues, setRegisterValues] = useState({
+    email: "",
+    password: "",
+    confirmpassword: ""
+  })
+
+  const handleLogin = (e) => {
+    const value = e.target.value;
+    setLoginValues({
+      ...loginValues,
+      [e.target.name]: value
+    })
+  }
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    alert("Logged In")
+  }
+
+  const handleRegister = (e) => {
+    const value = e.target.value;
+    setRegisterValues({
+      ...registerValues,
+      [e.target.name]: value,
+    })
+  }
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault()
+    alert("Registered!!")
+  }
+  
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked ? "checked" : "unchecked")
+  }
+
 
   return (
     <Container fluid className="wrapper">
@@ -25,7 +66,7 @@ function Register() {
         </Col>
         <Col md={6} className="colwrapper">
           {isregistered ? (
-            <div className="formwrapper">
+            <div className="loginformwarapper">
               <div className="icon">
                 <img
                   src={lock}
@@ -34,19 +75,19 @@ function Register() {
                 />
               </div>
               <hr />
-              <Form>
+              <Form onSubmit={handleLoginSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Control name="email" value={loginValues.email} type="email" placeholder="Enter email" onChange={handleLogin} />
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control name="password" value={loginValues.password} type="password" placeholder="Password" onChange={handleLogin} />
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Remeber Me !!" />
+                  <Form.Check name="rememberme" type="checkbox" label="Remember Me !!" onChange={handleRememberMe}/>
                 </Form.Group>
                 <br></br>
                 <hr />
@@ -70,25 +111,25 @@ function Register() {
                 />
               </div>
               <hr />
-              <Form>
+              
+              <Form onSubmit={handleRegisterSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Control name="email" value={registerValues.email} type="email" placeholder="Enter email" onChange={handleRegister} />
                 </Form.Group>
-                <br></br>
+                <br />
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control name="password" value={registerValues.password} type="password" placeholder="Password" onChange={handleRegister} />
                 </Form.Group>
-                <br></br>
+                <br />
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control name="confirmpassword" value={registerValues.confirmpassword} type="password" placeholder="Confirm Password" onChange={handleRegister} />
                 </Form.Group>
-                <br></br>
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Co</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                <br />
+                <Form.Group >
+                    <Form.File placeholder="Upload Image" />
                 </Form.Group>
                 <hr />
                 <div className="footer">
