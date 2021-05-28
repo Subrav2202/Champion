@@ -23,6 +23,7 @@ function Animation({value,id,name}) {
         //   ref={ref}
           src={name}
           className="cardimage"
+          alt="img"
           style={{ marginTop: `${value}px` }}
         />
       </div>

@@ -51,10 +51,6 @@ function Register() {
     setRememberMe(e.target.checked ? "checked" : "unchecked")
   }
 
-    const handleRememberMe = (e) => {
-        setRememberMe(e.target.checked ? "checked" : "unchecked");
-    };
-
   return (
     <Container fluid className="wrapper">
       <Row>
@@ -101,7 +97,7 @@ function Register() {
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>
-                  <Link onClick={() => setisregistered(!isregistered)}>
+                  <Link to="" onClick={() => setisregistered(!isregistered)}>
                     register here !!
                   </Link>
                 </div>
@@ -142,7 +138,7 @@ function Register() {
                   <Button variant="primary" type="submit">
                     Submit
                   </Button>
-                  <Link onClick={() => setisregistered(!isregistered)}>
+                  <Link to="" onClick={() => setisregistered(!isregistered)}>
                     already register !!
                   </Link>
                 </div>
