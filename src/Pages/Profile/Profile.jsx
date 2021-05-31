@@ -14,7 +14,7 @@ function Profile() {
         <Card.Header className="imagealign">
           <Card.Img
             variant="top"
-            src="https://source.unsplash.com/random"
+            src={info.image}
             className="cardImage"
           />
         </Card.Header>

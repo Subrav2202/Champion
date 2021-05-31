@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./regStyle.scss";
 import lock from "./lock.png";
 import champion from "./champ.jpg";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Row,
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { eye, eyeSlash } from "../constant";
 
 function Register() {
-    const history=useHistory()
+  const history = useHistory();
   const [isregistered, setisregistered] = useState(true);
   const [rememberMe, setRememberMe] = useState("unchecked");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -48,22 +48,27 @@ function Register() {
 
   const handleRegister = (e) => {
     const value = e.target.value;
-    setRegisterValues((registerValues)=>{
-        return({
+    setRegisterValues((registerValues) => {
+      return {
         ...registerValues,
-        [e.target.name]: value,        
-    })
+        [e.target.name]: value,
+      };
     });
   };
-//   const handleFile=(e)=>{
-//     const file = e.target.files[0]
-//     console.log(file)
-//   }
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    setRegisterValues((registerValues) => {
+      return {
+        ...registerValues,
+        image:file.name,
+      }});
+  };
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     alert("Registered!!");
-    localStorage.setItem("user",JSON.stringify(registerValues))
-    history.push("profile")
+    localStorage.setItem("user", JSON.stringify(registerValues));
+    history.push("profile");
   };
 
   const handleRememberMe = (e) => {
@@ -74,13 +79,6 @@ function Register() {
     setPasswordShow(passwordShow ? false : true);
   };
 
-//   const upload = (eventKey, event) => {
-//     console.log(eventKey);
-//     console.log(event);
-//     // setRegisterValues((val) => {
-//     //   console.log(val)
-//     // })
-//   };
 
   console.log(registerValues);
   return (
@@ -207,12 +205,7 @@ function Register() {
                 </Form.Group>
                 <br />
                 <Form.Group>
-                  <Form.File
-                    // name="image"
-                    value={registerValues.image}
-                    placeholder="Upload Image"
-                    onChange={handleRegister}
-                  />
+                  <Form.File onChange={handleFile} />
                 </Form.Group>
                 <br />
                 <Form.Group>
@@ -226,7 +219,9 @@ function Register() {
                     <option value="CTO">CTO</option>
                     <option value="Director">Director</option>
                     <option value="Team Lead">Team Lead</option>
-                    <option value="Associate Team Lead">Associate Team Lead</option>
+                    <option value="Associate Team Lead">
+                      Associate Team Lead
+                    </option>
                     <option value="Mentor">Mentor</option>
                     <option value="Developer">Developer</option>
                   </Form.Control>
