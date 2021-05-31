@@ -26,7 +26,7 @@ function Profile() {
             </div>
             <div className="body">
               <MdEmail className="bodyicons" />
-              <Card.Text className="bodyname">{info.email}</Card.Text>
+              <Card.Text className="bodyname">{info.registeremail}</Card.Text>
             </div>
             <div className="body">
               <MdPhone className="bodyicons" />

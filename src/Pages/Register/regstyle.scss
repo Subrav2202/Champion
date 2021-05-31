@@ -57,6 +57,14 @@ right: 3%;
 color: #2b8cb3;
 cursor: pointer;
 }
+
+.form-label:after {
+  content:" *";
+  color: red;
+}
+.error-tag{
+  color: red;
+}
   
 @keyframes slideInFromLeft {
     0% {
