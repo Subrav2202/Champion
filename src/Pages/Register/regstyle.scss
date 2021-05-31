@@ -1,12 +1,12 @@
+@import "../mixin";
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 .colwrapper{
-    display:flex;
-    align-items: center;
-    justify-content: center;
+    @include vhalign;
     height:100vh;
 }
 .formwrapper{
@@ -26,9 +26,7 @@ input::-webkit-inner-spin-button {
     height:80%;
 }
 .icon{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    @include vhalign;
 }
 .footer{
     display:flex;

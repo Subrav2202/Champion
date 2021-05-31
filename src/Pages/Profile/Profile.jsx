@@ -6,7 +6,8 @@ import { MdEmail, MdPhone } from "react-icons/md";
 import { BsPeopleCircle } from "react-icons/bs";
 
 function Profile() {
-  // const data= localStorage.getItem("key");
+  const data = localStorage.getItem("user");
+  const info = JSON.parse(data);
   return (
     <div className="wrapper">
       <Card className="cardWrapper">
@@ -19,32 +20,22 @@ function Profile() {
         </Card.Header>
 
         <Card.Body style={{ width: "100%" }}>
-          <Card.Text>
             <div className="body">
-              <icon className="bodyicons">
-                <IoIosPerson />
-              </icon>
-              <h6 className="bodyname">Elon Musk</h6>
+              <IoIosPerson className="bodyicons" />
+              <Card.Text className="bodyname">{info.fullname}</Card.Text>
             </div>
             <div className="body">
-              <icon className="bodyicons">
-                <MdEmail />
-              </icon>
-              <h6 className="bodyname">test@gmail.com</h6>
+              <MdEmail className="bodyicons" />
+              <Card.Text className="bodyname">{info.email}</Card.Text>
             </div>
             <div className="body">
-              <icon className="bodyicons">
-                <MdPhone />
-              </icon>
-              <h6 className="bodyname">8984592840</h6>
+              <MdPhone className="bodyicons" />
+             <Card.Text className="bodyname">{info.phone}</Card.Text>
             </div>
             <div className="body">
-              <icon className="bodyicons">
-                <BsPeopleCircle />
-              </icon>
-              <h6 className="bodyname">TL</h6>
+              <BsPeopleCircle className="bodyicons" />
+              <Card.Text className="bodyname">{info.role}</Card.Text>
             </div>
-          </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted"></Card.Footer>
       </Card>
