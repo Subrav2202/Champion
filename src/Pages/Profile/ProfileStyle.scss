@@ -1,36 +1,34 @@
+@import "../mixin";
+
 .wrapper {
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cardWrapper {
-  width: 35vw;
-}
-.imagealign {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cardImage {
-  width: 40%;
-  height: 25vh;
-  border-radius: 50%;
-}
-.body {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding:5%
-}
-.bodyicons {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-}
-.bodyname {
-  flex: 4;
-  display: flex;
-  justify-content:flex-start;
+  height: 100%;
+  @include vhalign;
+  .cardWrapper {
+    width: 35vw;
+    .imagealign {
+      @include vhalign;
+      .cardImage {
+        width: 40%;
+        height: 25vh;
+        border-radius: 50%;
+      }
+    }
+    .body {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5%;
+      .bodyicons {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+      }
+      .bodyname {
+        flex: 4;
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  }
 }

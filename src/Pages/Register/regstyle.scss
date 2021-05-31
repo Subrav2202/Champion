@@ -1,12 +1,12 @@
-// input::-webkit-outer-spin-button,
-// input::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
+@import "../mixin";
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .colwrapper{
-    display:flex;
-    align-items: center;
-    justify-content: center;
+    @include vhalign;
     height:100vh;
 }
 .formwrapper{
@@ -26,9 +26,7 @@
     height:80%;
 }
 .icon{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    @include vhalign;
 }
 .footer{
     display:flex;
@@ -43,6 +41,23 @@
     position:relative;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
+/* Password Div Styling-------------------- */
+.pass-wrapper {
+    position: relative;
+    display: flex;
+  }
+  
+/* passwordhShow icon-------------------------- */
+.pass-wrapper > i {
+position: absolute;
+top: 20%;
+right: 3%;
+}
+.pass-wrapper > i:hover {
+color: #2b8cb3;
+cursor: pointer;
+}
+  
 @keyframes slideInFromLeft {
     0% {
       transform: translateX(-100%);

@@ -1,9 +1,10 @@
 $card-padding:10px;
+@import '../var';
 
 .heading {
   text-align: center;
   color: palevioletred;
-  font-family:"Dancing Script", cursive;
+  font-family:$font_family;
 }
 .headerwrap {
   display: flex;
