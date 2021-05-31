@@ -58,9 +58,9 @@ function Register() {
   };
 
   const upload = (e) => {
-    setRegisterValues((val) => {
-      // console.log(val)
-    })
+    // setRegisterValues((val) => {
+    //   // console.log(val)
+    // })
   }
 
   console.log(registerValues)
