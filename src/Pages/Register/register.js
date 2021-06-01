@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./regStyle.scss";
-import lock from "./lock.png";
-import champion from "./champ.jpg";
+import lock from "../../Assets/lock.png";
+import champion from "../../Assets/champ.jpg";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -14,37 +14,23 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { eye, eyeSlash } from "../constant";
+import validate from './validate'
+import LoginForm from './loginForm'
 
 function Register() {
-  const history = useHistory();
+  const history=useHistory()
   const [isregistered, setisregistered] = useState(true);
-  const [rememberMe, setRememberMe] = useState("unchecked");
-  const [passwordShow, setPasswordShow] = useState(false);
-  const [loginValues, setLoginValues] = useState({
-    email: "",
-    password: "",
-    rememberme: "",
-  });
+  const [registerError,setRegisterError] = useState({})
+  
   const [registerValues, setRegisterValues] = useState({
     fullname: "",
-    email: "",
+    registeremail: "",
     phone: "",
     image: "",
     role: "",
   });
-
-  const handleLogin = (e) => {
-    const value = e.target.value;
-    setLoginValues({
-      ...loginValues,
-      [e.target.name]: value,
-    });
-  };
-
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    alert("Logged In");
-  };
+//   console.log(error.length)
+  
 
   const handleRegister = (e) => {
     const value = e.target.value;
@@ -55,32 +41,21 @@ function Register() {
       };
     });
   };
-  const handleFile = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    setRegisterValues((registerValues) => {
-      return {
-        ...registerValues,
-        image:file.name,
-      }});
-  };
+  const handleFile=(e)=>{
+    // const file = e.target.files[0]
+    console.log(e.target.files[0].name)
+  }
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    alert("Registered!!");
-    localStorage.setItem("user", JSON.stringify(registerValues));
-    history.push("profile");
-  };
-
-  const handleRememberMe = (e) => {
-    setRememberMe(e.target.checked ? "checked" : "unchecked");
-  };
-
-  const togglePassword = () => {
-    setPasswordShow(passwordShow ? false : true);
+      setRegisterError(validate(registerValues, isregistered))
+    //   if (Object.keys(registerError).length === 0) {
+          localStorage.setItem("user", JSON.stringify(registerValues))
+          history.push("/profile")
+    //   }
   };
 
 
-  console.log(registerValues);
+//   console.log(registerValues);
   return (
     <Container fluid>
       <Row style={{ width: "100%" }}>
@@ -98,66 +73,7 @@ function Register() {
         </Col>
         <Col md={6} className="colwrapper">
           {isregistered ? (
-            <div className="loginformwarapper">
-              <div className="icon">
-                <img
-                  src={lock}
-                  alt="lock"
-                  style={{ height: "100px", width: "100px" }}
-                />
-              </div>
-              <hr />
-              <Form onSubmit={handleLoginSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    name="email"
-                    value={loginValues.email}
-                    type="email"
-                    placeholder="Enter email"
-                    onChange={handleLogin}
-                  />
-                </Form.Group>
-                <br></br>
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <div className="pass-wrapper">
-                    <Form.Control
-                      name="password"
-                      value={loginValues.password}
-                      type={passwordShow ? "text" : "password"}
-                      placeholder="Password"
-                      onChange={handleLogin}
-                    />
-                    <i onClick={togglePassword}>
-                      {passwordShow ? eye : eyeSlash}
-                    </i>
-                  </div>
-                </Form.Group>
-                <br></br>
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check
-                    name="rememberme"
-                    type="checkbox"
-                    label="Remember Me !!"
-                    onChange={handleRememberMe}
-                  />
-                </Form.Group>
-                <br></br>
-                <hr />
-                <div className="footer">
-                  <Button variant="primary" type="submit">
-                    Submit
-                  </Button>
-                  <Button
-                    variant="outline-info"
-                    onClick={() => setisregistered(!isregistered)}
-                  >
-                    register here !!
-                  </Button>
-                </div>
-              </Form>
-            </div>
+              <LoginForm setisregister={() => setisregistered(!isregistered)} isregistered={isregistered}/>
           ) : (
             <div className="formwrapper">
               <div className="icon">
@@ -180,17 +96,19 @@ function Register() {
                     onChange={handleRegister}
                   />
                 </Form.Group>
+                {registerError.fullname && <small className="error-tag">{registerError.fullname}</small>}
                 <br />
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
-                    name="email"
-                    value={registerValues.email}
+                    name="registeremail"
+                    value={registerValues.registeremail}
                     type="email"
                     placeholder="Enter email"
                     onChange={handleRegister}
                   />
                 </Form.Group>
+                {registerError.registeremail && <small className="error-tag">{registerError.registeremail}</small>}
                 <br />
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Phone</Form.Label>
@@ -203,9 +121,15 @@ function Register() {
                     onChange={handleRegister}
                   />
                 </Form.Group>
+                {registerError.phone && <small className="error-tag">{registerError.phone}</small>}
                 <br />
                 <Form.Group>
-                  <Form.File onChange={handleFile} />
+                  <Form.File
+                    onChange={handleFile}
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    // required
+                  />
                 </Form.Group>
                 <br />
                 <Form.Group>

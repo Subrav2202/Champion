@@ -1,9 +1,6 @@
-@import "../mixin";
+@import "../../mixin";
 
-.wrapper {
-  width: 100vw;
-  height: 100%;
-  @include vhalign;
+
   .cardWrapper {
     width: 35vw;
     .imagealign {
@@ -15,10 +12,9 @@
       }
     }
     .body {
-      display: flex;
+      @include valign;
       justify-content: space-around;
-      align-items: center;
-      padding: 5%;
+      padding:2%;
       .bodyicons {
         flex: 2;
         display: flex;
@@ -31,4 +27,4 @@
       }
     }
   }
-}
+

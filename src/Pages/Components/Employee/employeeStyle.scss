@@ -1,0 +1,37 @@
+@import "../../mixin";
+@import "../../var";
+
+.employeecontainer{
+    padding:0;
+    margin:0;
+}
+.employeeheader{
+    @include valign;
+    padding-left:2% ;
+    background-color:#f2f2f2;
+    height:70px;
+}
+.employeeImageHeader{
+    @include vhalign;
+    .employeeImage{
+        width: 40%;
+        height: 10vh;
+        border-radius: 50%;
+    }
+}
+.body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2%;
+    .bodyicons {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+    }
+    .bodyname {
+      flex: 4;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }

@@ -4,3 +4,24 @@
     align-items: center;
     justify-content: center;
 }
+@mixin valign {
+    display:flex;
+    align-items: center;
+}
+
+@mixin cardbody {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5%;
+    .bodyicons {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+    }
+    .bodyname {
+      flex: 4;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
