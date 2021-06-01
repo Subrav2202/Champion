@@ -10,10 +10,8 @@ import {
   Form,
   Button,
   Card,
-  Dropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { eye, eyeSlash } from "../constant";
 import validate from './validate'
 import LoginForm from './loginForm'
 
@@ -54,13 +52,6 @@ function Register() {
     //   }
   };
 
-//   const upload = (eventKey, event) => {
-//     console.log(eventKey);
-//     console.log(event);
-//     // setRegisterValues((val) => {
-//     //   console.log(val)
-//     // })
-//   };
 
 //   console.log(registerValues);
   return (

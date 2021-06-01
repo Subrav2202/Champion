@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Dashboard from './Pages/Dashboard/Index'
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Switch>
         <Route exact path="/"><Main/></Route>
         <Route exact path="/register"><Register/></Route>
-        <Route exact path="/profile"><Profile/></Route>
+          <Route exact path="/profile"><Profile /></Route>
+          <Route exact path="/dashboard"><Dashboard/></Route>
       </Switch>
     </div>
     </BrowserRouter>
