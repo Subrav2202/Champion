@@ -1,22 +1,7 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { Button, Form, Modal, } from "react-bootstrap";
 
 function ModalRole(props) {
-    const [roleData, setRoleData] = useState({
-        role: "",
-        description: ""
-    })
-
-    const handleRoleData = (e) => {
-        const value = e.target.value;
-        setRoleData((roleData)=>{
-            return({
-                ...roleData,
-                [e.target.name]: value,        
-            })
-        });
-    }
-    console.log(roleData)
     const handleCloseModal = () => props.setShowModal(false);
     return (
         <>
@@ -32,8 +17,9 @@ function ModalRole(props) {
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Role</Form.Label>
                             <Form.Control name="role"
-                                value={props.modalType === "edit" ? props.currentData.role : props.modalType === "add" ? roleData.role : null}
-                                onChange={handleRoleData}
+                                // value={props.modalType === "edit" ? props.currentData.role : props.roleData.role}
+                                defaultValue={props.modalType === "edit" ? props.currentData.role : props.roleData.role}
+                                onChange={props.handleRoleData}
                                 placeholder="Enter Role"
                                 type="text">
                             </Form.Control>
@@ -42,8 +28,9 @@ function ModalRole(props) {
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Description</Form.Label>
                             <Form.Control name="description"
-                                value={props.modalType === "edit" ? props.currentData.description : props.modalType === "add" ? roleData.description : null}
-                                onChange={handleRoleData}
+                                defaultValue={props.modalType === "edit" ? props.currentData.description : props.roleData.description}
+                                // value={props.roleData.description}
+                                onChange={props.handleRoleData}
                                 placeholder="Enter Role Description"
                                 as="textarea">
                             </Form.Control>

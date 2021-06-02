@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./regStyle.scss";
-import lock from "./lock.png";
-import champion from "./champ.jpg";
-import {useHistory} from "react-router-dom"
+import lock from "../../Assets/lock.png";
+import champion from "../../Assets/champ.jpg";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Row,
@@ -32,11 +32,11 @@ function Register() {
 
   const handleRegister = (e) => {
     const value = e.target.value;
-    setRegisterValues((registerValues)=>{
-        return({
+    setRegisterValues((registerValues) => {
+      return {
         ...registerValues,
-        [e.target.name]: value,        
-    })
+        [e.target.name]: value,
+      };
     });
   };
   const handleFile=(e)=>{
@@ -141,7 +141,9 @@ function Register() {
                     <option value="CTO">CTO</option>
                     <option value="Director">Director</option>
                     <option value="Team Lead">Team Lead</option>
-                    <option value="Associate Team Lead">Associate Team Lead</option>
+                    <option value="Associate Team Lead">
+                      Associate Team Lead
+                    </option>
                     <option value="Mentor">Mentor</option>
                     <option value="Developer">Developer</option>
                   </Form.Control>

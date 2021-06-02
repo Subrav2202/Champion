@@ -3,4 +3,38 @@
     display:flex;
     align-items: center;
     justify-content: center;
+}
+@mixin valign {
+    display:flex;
+    align-items: center;
+}
+
+@mixin cardbody {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5%;
+    .bodyicons {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+    }
+    .bodyname {
+      flex: 4;
+      display: flex;
+      justify-content: flex-start;
+    }
   }
+
+@mixin GridContainer {
+    padding:0;
+    margin:0;
+}
+
+@mixin GridHeader {
+    display:flex;
+    align-items: center;
+    padding-left:2% ;
+    background-color:#f2f2f2;
+    height:70px;
+}

@@ -8,16 +8,16 @@ import Navbar from "../Navigation/Navbar"
 // import styled from "styled-components";
 import Animation from "./Animation"
 import { margintop } from "../constant";
-import cartoon1 from "./Assets/cartoon1.jpg";
-import cartoon2 from "./Assets/cartoon2.png";
-import cartoon3 from "./Assets/cartoon3.png";
-import cartoon4 from "./Assets/cartoon4.jpg";
-import cartoon5 from "./Assets/cartoon5.jpg";
-import cartoon6 from "./Assets/cartoon6.jpg";
-import cartoon7 from "./Assets/cartoon7.jpg";
-import cartoon8 from "./Assets/cartoon8.jpg";
-import cartoon9 from "./Assets/cartoon9.jpg";
-import cartoon10 from "./Assets/cartoon10.jpg";
+import cartoon1 from "../../Assets/cartoon1.jpg";
+import cartoon2 from "../../Assets/cartoon2.png";
+import cartoon3 from "../../Assets/cartoon3.png";
+import cartoon4 from "../../Assets/cartoon4.jpg";
+import cartoon5 from "../../Assets/cartoon5.jpg";
+import cartoon6 from "../../Assets/cartoon6.jpg";
+import cartoon7 from "../../Assets/cartoon7.jpg";
+import cartoon8 from "../../Assets/cartoon8.jpg";
+import cartoon9 from "../../Assets/cartoon9.jpg";
+import cartoon10 from "../../Assets/cartoon10.jpg";
 
 function Index() {
   const [img, setimg] = useState();
@@ -67,7 +67,7 @@ function Index() {
   return (
     <>
       {load ? (
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
       ) : (
         <Container fluid>
           <Row>

@@ -3,7 +3,7 @@ import { Form ,Button} from 'react-bootstrap';
 import "./regStyle.scss";
 import { eye, eyeSlash } from "../constant";
 import validate from './validate'
-import lock from "./lock.png";
+import lock from "../../Assets/lock.png";
 
 function Loginform(props) {
     const [rememberMe, setRememberMe] = useState("unchecked");

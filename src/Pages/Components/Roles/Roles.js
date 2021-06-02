@@ -14,8 +14,23 @@ function Roles() {
     ]
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState()
-    const [currentData,setCurrentData] = useState()
+    const [currentData, setCurrentData] = useState()
+    const [roleData, setRoleData] = useState({
+        role: "",
+        description: ""
+    })
 
+    const handleRoleData = (e) => {
+        const value = e.target.value;
+        setRoleData((roleData)=>{
+            return({
+                ...roleData,
+                [e.target.name]: value,        
+            })
+        });
+        console.log(roleData)
+    }
+    
     const handleAddModal = (type) => {
         setShowModal(true)
         setModalType(type)
@@ -55,9 +70,11 @@ function Roles() {
                         }
                     </tbody>
                 </Table>
-                <ModalRole showModal={showModal} setShowModal={setShowModal} modalType={modalType} currentData={currentData}/>
             </div>
-            
+            <ModalRole showModal={showModal} setShowModal={setShowModal}
+                modalType={modalType} currentData={currentData}
+                roleData={roleData} setRoleData={setRoleData} handleRoleData={handleRoleData}
+            />
         </>
     )
 }
