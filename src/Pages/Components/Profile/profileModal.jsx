@@ -2,12 +2,7 @@ import React,{useState} from "react";
 import { Modal,Button,Form } from "react-bootstrap";
 
 function ProfileModal(props) {
-  const data = localStorage.getItem("user");
-  const info = JSON.parse(data);
 
-  const handleRegister=()=>{
-    console.log("hello")
-  }
   return (
     <>
       <Modal
@@ -25,10 +20,10 @@ function ProfileModal(props) {
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
                     name="fullname"
-                    value={info.fullname}
+                    value={props.info.fullname}
                     type="text"
                     placeholder="Enter Full Name"
-                    onChange={handleRegister}
+                    onChange={()=>props.handleregister()}
                   />
                 </Form.Group>
                 {/* {registerError.fullname && <small className="error-tag">{registerError.fullname}</small>} */}
@@ -37,10 +32,10 @@ function ProfileModal(props) {
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     name="registeremail"
-                    value={info.email}
+                    value={props.info.email}
                     type="email"
                     placeholder="Enter email"
-                    onChange={handleRegister}
+                    onChange={()=>props.handleregister()}
                   />
                 </Form.Group>
                 {/* {registerError.registeremail && <small className="error-tag">{registerError.registeremail}</small>} */}
@@ -50,10 +45,10 @@ function ProfileModal(props) {
                   <Form.Control
                     name="phone"
                     maxLength={10}
-                    value={info.phone}
+                    value={props.info.phone}
                     type="number"
                     placeholder="Enter Phone Number"
-                    onChange={handleRegister}
+                    onChange={()=>props.handleregister()}
                   />
                 </Form.Group>
                 {/* {registerError.phone && <small className="error-tag">{registerError.phone}</small>} */}
@@ -72,7 +67,7 @@ function ProfileModal(props) {
                     name="role"
                     as="select"
                     custom
-                    onChange={handleRegister}
+                    onChange={()=>props.handleregister()}
                   >
                     <option value="Select">Select</option>
                     <option value="CTO">CTO</option>

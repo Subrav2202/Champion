@@ -2,9 +2,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import Main from "./Pages/Main/Index"
 import Register  from "./Pages/Register/register"
-import Profile from "./Pages/Admin/Profile/Profile"
-import Dashboard from "./Pages/Admin/Dashboard/dashboard"
-import Employee from "./Pages/Admin/Employee/employee"
+import Profile from "./Pages/Components/Profile/Profile"
+import Dashboard from "./Pages/Components/Dashboard/dashboard"
+import Employee from "./Pages/Components/Employee/employee"
 import {
   BrowserRouter,
   Switch,
