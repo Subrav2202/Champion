@@ -1,5 +1,6 @@
 $card-padding:10px;
 @import '../var';
+@import '../mixin';
 
 .heading {
   text-align: center;
@@ -12,27 +13,37 @@ $card-padding:10px;
   height: 70vh;
   justify-content:center;
 }
-.cardimage {
-  width: 5vw;
-  height: 40vh;
-  position:relative;
-  opacity: 0.5;
-  padding:$card-padding;
-  background-color: white;
-  border: 1px solid rgb(128, 128, 128) !important;
-  transition: all 1s ease-in;
-  animation:  cardmove 5s ease-out forwards;
-  box-sizing:content-box;
+
+
+@each $oddnumber in $oddnumbers {
+  .cardimage-#{$oddnumber}{
+    @include card-animation;
+    animation:  cardmoveodd 2s ease-out forwards;
+  }
 }
 
-@keyframes cardmove {
+@each $evennumber in $evennumbers{
+  .cardimage-#{$evennumber}{
+    @include card-animation;
+    animation:  cardmoveeven 2s ease-out forwards;
+  }
+}
+
+@keyframes cardmoveodd {
   from {transform: translate(0,-350px)}
   /* to {transform: translate3d(50%,10px,10px)} */
 }  
-.cardimage:hover{
-  width:10vw;
-  height:50vh;
-  opacity:1;
+@keyframes cardmoveeven {
+  from {transform: translate(0,350px)}
+  /* to {transform: translate3d(50%,10px,10px)} */
+} 
+
+@each $number in $numbers{
+  .cardimage-#{$number}:hover{
+    width:10vw;
+    height:50vh;
+    opacity:1;
+  }
 }
 .cardwrap {
   border:none;

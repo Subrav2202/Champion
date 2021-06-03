@@ -33,7 +33,7 @@ function SideBar({collapse,setCollapse}) {
       {SidebarData.map((item, index) => {
         return (
           <li key={index} className={item.cName}>
-            <NavLink className="linkWrapper" activeStyle={{backgroundColor:"#13223b"}} to={item.path}>
+            <NavLink className="linkWrapper" activeStyle={{backgroundColor:"#294463"}} to={item.path}>
               <span className="sideBarIcon">{item.icon}</span>
               <span className="sideBarTitle">{item.title}</span>
             </NavLink>

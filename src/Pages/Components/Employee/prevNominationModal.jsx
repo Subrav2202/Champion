@@ -10,10 +10,11 @@ function PrevNominationModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header>
+        <Modal.Header  className="info-modal-header">
         <h6>Previous Nominations</h6>
         </Modal.Header>
         <Modal.Body>
+          <div></div>
           <Table striped bordered hover>
             <thead>
               <tr>

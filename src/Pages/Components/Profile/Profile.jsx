@@ -29,8 +29,8 @@ function ProfileGridBody() {
       <div className="header">
         <h4>Profile</h4>
       </div>
-      <div className="d-flex" style={{ height: "80%" }}>
-        <div className="d-flex justify-content-center align-self-center">
+      <div className="d-flex" style={{ height: "85%" }}>
+        <div className="d-flex justify-content-center align-items-center">
           <ProfileCard />
         </div>
       </div>
