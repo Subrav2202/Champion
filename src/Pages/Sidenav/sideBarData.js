@@ -27,5 +27,11 @@ export const SidebarData = [
     path: '/roles',
     icon: <FaIcons.FaUsersCog />,
     cName: 'nav-text'
+  },
+  {
+    title: 'History',
+    path: '/history',
+    icon: <AiIcons.AiOutlineHistory />,
+    cName: 'nav-text'
   }
 ];

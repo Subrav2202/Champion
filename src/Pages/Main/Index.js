@@ -79,15 +79,7 @@ function Index() {
                   //  Counter(item.id)
                   let value = margintop();
                   return (
-                  //   <Card key={index} className="cardwrap" ref={ref}>
-                  //     <Card.Img
-                  //       variant="top"
-                  //       src={item.name}
-                  //       className="cardimage"
-                  //       style={{ marginTop: `${value}px`}}
-                  //     />
-                  //   </Card>
-                  <Animation key={item.name} id={item.id} value={value} name={item.name}/>
+                  <Animation key={item.id} id={item.id} value={value} name={item.name}/>
                   );
                 })}
               </div>

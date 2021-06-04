@@ -6,12 +6,14 @@ import Profile from "./Pages/Components/Profile/Profile"
 import Dashboard from "./Pages/Components/Dashboard/dashboard"
 import Employee from "./Pages/Components/Employee/employee"
 import Roles from './Pages//Components/Roles/RolesMain'
+import History from './Pages/Components/History/History';
 import {
   BrowserRouter,
   Switch,
   Route
 } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route exact path="/dashboard"><Dashboard/></Route>
         <Route exact path="/employee"><Employee/></Route>
         <Route exact path="/roles"><Roles/></Route>
+        <Route exact path="/history"><History/></Route>
       </Switch>
     </div>
     </BrowserRouter>

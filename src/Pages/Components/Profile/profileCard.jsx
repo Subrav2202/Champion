@@ -13,15 +13,38 @@ function ProfileCard() {
 
   return (
     <>
-      <Card className="cardWrapper">
-        <Card.Body style={{ width: "100%" }}>
-          <div className="d-flex justify-content-center align-items-center">
-            <img src="https://source.unsplash.com/random" style={{width:"40%",height:'40%',borderRadius:"50%"}} alt="img" />
+      <Card className="profile-cardWrapper">
+        <Card.Header className="imagealign">
+          <Card.Img
+            variant="top"
+            src="https://source.unsplash.com/random"
+            className="cardImage"
+          />
+        </Card.Header>
+
+        <Card.Body className="w-100">
+          <div className="body">
+            <IoIosPerson className="bodyicons" />
+            <Card.Text className="bodyname">{info.fullname}</Card.Text>
           </div>
-          <div className="d-flex justify-content-center align-items-center">
-            <Button variant="outline-success">Nominate</Button>
+          <div className="body">
+            <MdEmail className="bodyicons" />
+            <Card.Text className="bodyname">{info.registeremail}</Card.Text>
+          </div>
+          <div className="body">
+            <MdPhone className="bodyicons" />
+            <Card.Text className="bodyname">{info.phone}</Card.Text>
+          </div>
+          <div className="body">
+            <BsPeopleCircle className="bodyicons" />
+            <Card.Text className="bodyname">{info.role}</Card.Text>
           </div>
         </Card.Body>
+        <Card.Footer className="d-flex justify-content-center w-100 profile-card-footer">
+          <Button variant="outline-info" onClick={() => setshow(true)}>
+            Edit
+          </Button>
+        </Card.Footer>
       </Card>
       {show && <ProfileModal show={show} onHide={() => setshow(false)} />}
     </>

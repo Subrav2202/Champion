@@ -1,13 +1,6 @@
 @import "../../mixin";
 @import "../../var";
 
-.role-container{
-    @include GridContainer
-}
-.header{
-    @include GridHeader
-}
-
 .add-btn {
     width: 15%;
     margin: 2% 0;

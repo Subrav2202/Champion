@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form ,Button} from 'react-bootstrap';
+import { Form ,Button, Card} from 'react-bootstrap';
 import "./regStyle.scss";
 import { eye, eyeSlash } from "../constant";
 import validate from './validate'
@@ -37,7 +37,7 @@ function Loginform(props) {
     
     return (
         <>
-            <div className="loginformwarapper">
+            <Card className="formwrapper">
               <div className="icon">
                 <img
                   src={lock}
@@ -91,14 +91,14 @@ function Loginform(props) {
                     Submit
                   </Button>
                   <Button
-                    variant="outline-info"
+                    variant="secondary"
                     onClick={props.setisregister}
                   >
-                    register here !!
+                    Register here !!
                   </Button>
                 </div>
               </Form>
-            </div>
+            </Card>
         </>
     )
 }

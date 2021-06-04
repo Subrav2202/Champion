@@ -1,0 +1,12 @@
+@import "../mixin";
+
+.main-container{
+    @include GridContainer
+}
+.header{
+    @include GridHeader
+}
+
+.slide {
+    @include sidebar-slide;
+}
