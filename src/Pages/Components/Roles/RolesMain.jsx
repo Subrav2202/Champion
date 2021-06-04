@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './roleStyle.scss'
+import '../componentStyle.scss';
 import SideBar from "../../Sidenav/sideBar";
 import Roles from './Roles'
 import { Container, Row, Col } from "react-bootstrap";
@@ -9,9 +10,9 @@ function RolesMain() {
     const [collapse, setCollapse] = useState(false);
     return (
         <>
-            <Container className="role-container" fluid>
+            <Container className="main-container" fluid>
                 <Row>
-                    <Col md={collapse ? 1 : 2} className="p-0">
+                    <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
                         <RolesGridHeader collapse={collapse} setCollapse={setCollapse} />
                     </Col>
                     <Col md={collapse ? 11 : 10} className="p-0">

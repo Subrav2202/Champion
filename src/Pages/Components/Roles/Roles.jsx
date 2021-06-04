@@ -56,8 +56,9 @@ function Roles() {
                     </thead>
                     <tbody>
                         {
-                            data.map((val, index) => (
-                                <tr key={index}>
+                            data.map((val,index) => {
+                                return (
+                                    <tr key={index}>
                                     <td>{index+1}</td>
                                     <td>{val.role}</td>
                                     <td>{val.description}</td>
@@ -66,7 +67,8 @@ function Roles() {
                                         <Button className="delete-btn">Delete</Button>
                                     </td>
                                 </tr>
-                            ))
+                                )
+                            })
                         }
                     </tbody>
                 </Table>

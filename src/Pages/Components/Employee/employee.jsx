@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SideBar from "../../Sidenav/sideBar";
 import "./employeeStyle.scss";
+import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
 import EmployeeCard from "./employeeCard";
 // import { AiOutlineMenu } from "react-icons/ai";
@@ -9,7 +10,7 @@ function Employee() {
   const [collapse, setCollapse] = useState(false);
   return (
     <>
-      <Container fluid className="emp-container">
+      <Container fluid className="main-container">
         {/* <Row className="top-nav">
           <Col>
             <div className="employee-navbar">
@@ -22,7 +23,7 @@ function Employee() {
           </Col>
         </Row> */}
         <Row className="side-nav">
-          <Col md={collapse ? 1 : 2} className="p-0">
+          <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
             <EmployeeGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={collapse ? 11 : 10} className="p-0">

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ProfileCard from "./profileCard";
 import "./ProfileStyle.scss"
+import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
 import SideBar from "../../Sidenav/sideBar";
 
 function Profile() {
   const [collapse, setCollapse] = useState(false);
   return (
-    <Container className="profile-container" fluid>
+    <Container className="main-container" fluid>
       <Row >
-        <Col md={collapse ? 1 : 2} className="p-0">
+        <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
           <ProfileGridHeader collapse={collapse} setCollapse={setCollapse} />
         </Col>
         <Col md={collapse ? 11 : 10} className="p-0">

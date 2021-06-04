@@ -15,15 +15,8 @@ input::-webkit-inner-spin-button {
     border: 1px solid black;
     border-radius: 10px;
     width:80%;
-    // height:95%;
-}
-.loginformwarapper{
-    margin:auto;
-    padding:20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    width:80%;
-    // height:80%;
+    box-shadow: 10px 10px 15px  rgba(105, 102, 102, 0.815);
+    // background-color: transparent;
 }
 .icon{
     @include vhalign;

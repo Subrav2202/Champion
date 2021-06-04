@@ -4,11 +4,11 @@ import { IoIosPerson } from "react-icons/io";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { BsPeopleCircle } from "react-icons/bs";
 import Nominatemodal from "./nominateModel"
-import PrevNominationModal from "./prevNominationModal"
+import InfoModal from "./InfoModal"
 
 function EmployeeCard() {
   const [modalShow, setModalShow] = useState(false);
-  const [prevNomination, setprevNomination] = useState(false);
+  const [infoModal, setInfoModal] = useState(false);
   return (
     <>
       <Card className="employee-cardWrapper">
@@ -36,39 +36,10 @@ function EmployeeCard() {
 
           <div className="d-flex justify-content-around">
             <Button className="nominate-btn" onClick={() => setModalShow(true)}>Nominate</Button>
-            <Button  onClick={() => setprevNomination(true)}>Info</Button>
+            <Button  onClick={() => setInfoModal(true)}>Info</Button>
           </div>
         </div>
-        {/* <Card.Header className="employeeImageHeader">
-          <Card.Img
-            variant="top"
-            src="https://source.unsplash.com/random"
-            className="employeeImage"
-          />
-        </Card.Header>
 
-        <Card.Body>
-          <div className="body">
-            <IoIosPerson className="bodyicons" />
-            <Card.Text className="bodyname">Elon Musk</Card.Text>
-          </div>
-          <div className="body">
-            <MdEmail className="bodyicons" />
-            <Card.Text className="bodyname">test@gmail.com</Card.Text>
-          </div>
-          <div className="body">
-            <MdPhone className="bodyicons" />
-            <Card.Text className="bodyname">992142424</Card.Text>
-          </div>
-          <div className="body">
-            <BsPeopleCircle className="bodyicons" />
-            <Card.Text className="bodyname">developer</Card.Text>
-          </div>
-        </Card.Body>
-        <Card.Footer className="d-flex justify-content-between">
-          <Button variant="outline-success" size='sm' onClick={() => setModalShow(true)}>Nominate</Button>
-          <Button variant="outline-info" size='sm' onClick={() => setprevNomination(true)}>History</Button>
-        </Card.Footer> */}
       </Card>
       { modalShow &&
         <Nominatemodal
@@ -76,10 +47,10 @@ function EmployeeCard() {
           onHide={() => setModalShow(false)}
         />
       }
-      { prevNomination &&
-        <PrevNominationModal
-          show={prevNomination}
-          onHide={() => setprevNomination(false)}
+      { infoModal &&
+        <InfoModal
+          show={infoModal}
+          onHide={() => setInfoModal(false)}
         />
       }
     </>

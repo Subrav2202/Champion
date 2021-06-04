@@ -1,13 +1,6 @@
 @import "../../mixin";
 @import "../../var";
 
-.emp-container {
-    @include GridContainer;
-}
-.header {
-    @include GridHeader;
-}
-
 .employee-cardWrapper {
     position: relative;
     @include vhalign;
@@ -68,6 +61,22 @@
 .info-modal-header {
     @include modal-header
 }
+
+.body {
+    @include vhalign;
+    justify-content: space-around;
+    padding:2%;
+    .bodyicons {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+    }
+    .bodyname {
+      flex: 4;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
 
 // .nominate-btn{
 //   // background-color:rgb(85, 81, 44);
