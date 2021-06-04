@@ -5,6 +5,7 @@ import Register  from "./Pages/Register/register"
 import Profile from "./Pages/Components/Profile/Profile"
 import Dashboard from "./Pages/Components/Dashboard/dashboard"
 import Employee from "./Pages/Components/Employee/employee"
+import Roles from './Pages//Components/Roles/RolesMain'
 import {
   BrowserRouter,
   Switch,
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/profile"><Profile/></Route>
         <Route exact path="/dashboard"><Dashboard/></Route>
         <Route exact path="/employee"><Employee/></Route>
+        <Route exact path="/roles"><Roles/></Route>
       </Switch>
     </div>
     </BrowserRouter>

@@ -1,21 +1,17 @@
 @import "../../mixin";
 @import "../../var";
 
-.employeecontainer{
-    padding:0;
-    margin:0;
+.emp-container{
+    @include GridContainer
 }
-.employeeheader{
-    @include valign;
-    padding-left:2% ;
-    background-color:#f2f2f2;
-    height:70px;
+.header{
+    @include GridHeader
 }
 .employeeImageHeader{
     @include vhalign;
     .employeeImage{
         width: 40%;
-        height: 10vh;
+        height: 16vh;
         border-radius: 50%;
     }
 }
@@ -35,3 +31,29 @@
       justify-content: flex-start;
     }
   }
+
+  // .employee-navbar {
+  //   @include valign;
+  //   background-color: orange;
+  //   // width: 100%;
+  //   height: 10vh;
+  //   justify-content: space-between;
+  // }
+
+  // @media (max-width: 768px) {
+  //   .top-nav{
+  //     display: block;
+  //   }
+  //   .side-nav{
+  //     display: none;
+  //   }
+  // }
+
+  // @media (min-width: 768px) {
+  //   .top-nav{
+  //     display: none;
+  //   }
+  //   .side-nav{
+  //     display: inline-flex;
+  //   }
+  // }

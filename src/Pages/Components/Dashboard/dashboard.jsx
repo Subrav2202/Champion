@@ -6,7 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 function dashboard() {
   return (
     <>
-      <Container fluid className="dashbordcontainer">
+      <Container fluid className="container">
         <Row>
           <Col md={2}>
           <SideBar />

@@ -2,7 +2,8 @@ import React,{useState} from "react";
 import { Modal,Button,Form } from "react-bootstrap";
 
 function ProfileModal(props) {
-
+const data=localStorage.getItem("user")
+const info=JSON.parse(data)
   return (
     <>
       <Modal
@@ -20,7 +21,7 @@ function ProfileModal(props) {
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
                     name="fullname"
-                    value={props.info.fullname}
+                    defaultValue={info.fullname}
                     type="text"
                     placeholder="Enter Full Name"
                     onChange={()=>props.handleregister()}
@@ -32,7 +33,7 @@ function ProfileModal(props) {
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     name="registeremail"
-                    value={props.info.email}
+                    defaultValue={info.registeremail}
                     type="email"
                     placeholder="Enter email"
                     onChange={()=>props.handleregister()}
@@ -45,7 +46,7 @@ function ProfileModal(props) {
                   <Form.Control
                     name="phone"
                     maxLength={10}
-                    value={props.info.phone}
+                    defaultValue={info.phone}
                     type="number"
                     placeholder="Enter Phone Number"
                     onChange={()=>props.handleregister()}

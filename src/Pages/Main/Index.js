@@ -87,7 +87,7 @@ function Index() {
                   //       style={{ marginTop: `${value}px`}}
                   //     />
                   //   </Card>
-                  <Animation key={item.id} id={item.id} value={value} name={item.name}/>
+                  <Animation key={item.name} id={item.id} value={value} name={item.name}/>
                   );
                 })}
               </div>

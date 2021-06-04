@@ -7,46 +7,44 @@ import SideBar from "../../Sidenav/sideBar";
 function Profile() {
   const [collapse, setCollapse] = useState(false);
   return (
-    <Container className="employeecontainer">
-      <Row style={{ width: "100vw" }}>
-        {collapse ? (
-          <>
-            <Col md={1} style={{ padding: "0" }}>
-              <SideBar
-                collapse={collapse}
-                setCollapse={() => setCollapse(!collapse)}
-              />
-            </Col>
-            <Col md={11}>
-              <div className="employeeheader">
-                <h4>Profile</h4>
-              </div>
-              <div className="d-flex my-3 justify-content-center">
-                <ProfileCard />
-              </div>
-            </Col>
-          </>
-        ) : (
-          <>
-            <Col md={2} style={{ padding: "0" }}>
-              <SideBar
-                collapse={collapse}
-                setCollapse={() => setCollapse(!collapse)}
-              />
-            </Col>
-            <Col md={10}>
-              <div className="employeeheader">
-                <h4>Profile</h4>
-              </div>
-              <div className="d-flex my-3 justify-content-center">
-                <ProfileCard />
-              </div>
-            </Col>
-          </>
-        )}
+    <Container className="profile-container" fluid>
+      <Row >
+        <Col md={collapse ? 1 : 2} className="p-0">
+          <ProfileGridHeader collapse={collapse} setCollapse={setCollapse} />
+        </Col>
+        <Col md={collapse ? 11 : 10} className="p-0">
+          <ProfileGridBody />
+        </Col>
       </Row>
     </Container>
   );
 }
 
 export default Profile;
+
+
+function ProfileGridBody() {
+  return (
+    <>
+      <div className="header">
+        <h4>Profile</h4>
+      </div>
+      <div className="d-flex" style={{ height: "80%" }}>
+        <div className="d-flex justify-content-center align-self-center">
+          <ProfileCard />
+        </div>
+      </div>
+    </>
+  )
+}
+
+function ProfileGridHeader({ collapse, setCollapse }) {
+  return (
+    <>
+      <SideBar
+        collapse={collapse}
+        setCollapse={() => setCollapse(!collapse)}
+      />
+    </>
+  )
+}

@@ -3,7 +3,8 @@
 
 .sidebarwrapper {
   background-color: #010114;
-  min-height: 100vh !important;
+  height: 100%;
+  min-height: 100vh;
   z-index: 100;
   .sidebarheader {
     @include valign;

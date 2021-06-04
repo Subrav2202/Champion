@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 
 function Animation({value,id,name}) {
 
-    // const ref = useRef(null);
+// const ref = useRef(null);
 //       useEffect(() => {
 //     console.log("hello");
 //     gsap.from("cardwrap", {

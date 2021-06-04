@@ -1,12 +1,23 @@
 @import "../../mixin";
 
-
+.profile-container{
+  @include GridContainer
+}
+.header{
+  @include GridHeader
+}
   .cardWrapper {
-    width: 35vw;
+    // width: 60%;
+    background-image:url("https://images.pexels.com/photos/3779814/pexels-photo-3779814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    background-repeat: no-repeat;
+    // min-width: 50vw;
+    width:300px;
+    height:400px;
     .imagealign {
       @include vhalign;
       .cardImage {
-        width: 40%;
+        width: 30%;
         height: 25vh;
         border-radius: 50%;
       }
