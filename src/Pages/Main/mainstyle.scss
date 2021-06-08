@@ -18,14 +18,14 @@ $card-padding:10px;
 @each $oddnumber in $oddnumbers {
   .cardimage-#{$oddnumber}{
     @include card-animation;
-    animation:  cardmoveodd 2s ease-out forwards;
+    animation:  cardmoveodd 4s ease-out forwards;
   }
 }
 
 @each $evennumber in $evennumbers{
   .cardimage-#{$evennumber}{
     @include card-animation;
-    animation:  cardmoveeven 2s ease-out forwards;
+    animation:  cardmoveeven 4s ease-out forwards;
   }
 }
 

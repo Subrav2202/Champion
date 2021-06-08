@@ -4,6 +4,7 @@ import '../componentStyle.scss';
 import SideBar from "../../Sidenav/sideBar";
 import Roles from './Roles'
 import { Container, Row, Col } from "react-bootstrap";
+import Header from "../Header/Header";
 
 
 function RolesMain() {
@@ -12,7 +13,7 @@ function RolesMain() {
         <>
             <Container className="main-container" fluid>
                 <Row>
-                    <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
+                    <Col md={collapse ? 1 : 2} className="slide">
                         <RolesGridHeader collapse={collapse} setCollapse={setCollapse} />
                     </Col>
                     <Col md={collapse ? 11 : 10} className="p-0">
@@ -30,9 +31,7 @@ export default RolesMain;
 function RolesGridBody() {
     return (
         <>
-            <div className="header">
-                <h4>Roles details</h4>
-            </div>
+            <Header title="Roles" />
             <div className="d-flex my-3 px-2">
                 <Roles />
             </div>

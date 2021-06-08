@@ -38,12 +38,15 @@ function RegisterForm(props) {
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        setRegisterError(validate(registerValues, props.isregistered))
-        //   if (Object.keys(registerError).length === 0) {
-        localStorage.setItem("user", JSON.stringify(registerValues))
-        history.push("/profile")
-        //   }
+        if (registerValues.fullname !== "" && registerValues.registeremail !== "" && registerValues.phone !== "" && registerValues.role !== "" && Object.keys(registerError).length === 0) {
+            localStorage.setItem("user", JSON.stringify(registerValues))
+            props.setisregister();
+        }
     };
+
+    const validateOnType = () => {
+        setRegisterError(validate(registerValues, props.isregistered))
+    }
     return (
         <>
             <Card className="formwrapper">
@@ -56,7 +59,7 @@ function RegisterForm(props) {
                 </div>
                 <hr />
 
-                <Form onSubmit={handleRegisterSubmit}>
+                <Form onSubmit={handleRegisterSubmit} onKeyUp={validateOnType}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control

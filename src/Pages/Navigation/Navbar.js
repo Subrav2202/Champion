@@ -10,7 +10,7 @@ function Navbar() {
   };
   return (
     <div className="navigation">
-      <h2>NeoSoft</h2>
+      <h1>Neo<span className="brand-style">SOFT</span></h1>
       <Button variant="outline-dark" onClick={clickHandler}>
         Skip
       </Button>

@@ -4,6 +4,7 @@ import "./employeeStyle.scss";
 import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
 import EmployeeCard from "./employeeCard";
+import Header from "../Header/Header";
 // import { AiOutlineMenu } from "react-icons/ai";
 
 function Employee() {
@@ -23,7 +24,7 @@ function Employee() {
           </Col>
         </Row> */}
         <Row className="side-nav">
-          <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
+          <Col md={collapse ? 1 : 2} className="slide">
             <EmployeeGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={collapse ? 11 : 10} className="p-0">
@@ -49,9 +50,7 @@ function EmployeeGridHeader({ collapse, setCollapse }) {
 function EmployeeGridBody() {
   return (
     <>
-      <div className="header">
-        <h4>Employee details</h4>
-      </div>
+      <Header title="Employee details" />
       <div className="d-flex my-3 px-2">
         <Container>
           <Row className="gy-3 gx-4 justify-content-center">

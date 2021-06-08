@@ -3,6 +3,7 @@ import SideBar from "../../Sidenav/sideBar";
 import "./dashboardStyle.scss";
 import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
+import Header from '../Header/Header'
 // import EmployeeCard from "./employeeCard";
 
 function Dashboard() {
@@ -11,7 +12,7 @@ function Dashboard() {
     <>
       <Container fluid className="main-container">
         <Row className="side-nav">
-          <Col md={collapse ? 1 : 2} className={collapse ? "slide" : null}>
+          <Col md={collapse ? 1 : 2} className="slide" >
             <DashboardGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={collapse ? 11 : 10} className="p-0">
@@ -37,14 +38,12 @@ function DashboardGridHeader({ collapse, setCollapse }) {
 function DashboardGridBody() {
   return (
     <>
-      <div className="header">
-        <h4>Dashboard</h4>
-        </div>
-        <div className="d-flex my-3 px-2">
+      <Header title="Dashboard" />
+      <div className="d-flex my-3 px-2">
         <Container>
           <Row>
             <Col md={{ span: 10, offset: 1 }}>
-                {/* <dashboardContent/> */}
+              {/* <dashboardContent/> */}
             </Col>
           </Row>
         </Container>

@@ -32,9 +32,9 @@
 }
 
 @mixin GridHeader {
-    display:flex;
-    align-items: center;
-    padding-left:2% ;
+    @include valign;
+    justify-content: space-between;
+    // padding-left:2% ;
     background-color:#f2f2f2;
     height:70px;
 }

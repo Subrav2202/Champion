@@ -1,106 +1,118 @@
 import React, { useState } from 'react'
-import { Form ,Button, Card} from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import "./regStyle.scss";
 import { eye, eyeSlash } from "../constant";
 import validate from './validate'
 import lock from "../../Assets/lock.png";
+import { useHistory } from 'react-router';
 
 function Loginform(props) {
-    const [rememberMe, setRememberMe] = useState("unchecked");
-    const [passwordShow, setPasswordShow] = useState(false);
-    const [loginError, setLoginError] = useState({})
-    const [loginValues, setLoginValues] = useState({
-        loginemail: "",
-        password: "",
-    });
+  const history = useHistory()
+  const [rememberMe, setRememberMe] = useState("unchecked");
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [loginError, setLoginError] = useState({})
+  const [loginValues, setLoginValues] = useState({
+    loginemail: "",
+    password: "",
+    role: "Employee"
+  });
 
-    const handleLogin = (e) => {
-        const value = e.target.value;
-        setLoginValues({
-          ...loginValues,
-          [e.target.name]: value,
-        });
-    };
-    
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
-        setLoginError(validate(loginValues,props.isregistered))
-    };
-    
-    const handleRememberMe = (e) => {
-        setRememberMe(e.target.checked ? "checked" : "unchecked");
-    };
-    
-    const togglePassword = () => {
-        setPasswordShow(passwordShow ? false : true);
-    };
-    
-    return (
-        <>
-            <Card className="formwrapper">
-              <div className="icon">
-                <img
-                  src={lock}
-                  alt="lock"
-                  style={{ height: "100px", width: "100px" }}
-                />
-              </div>
-              <hr />
-              <Form onSubmit={handleLoginSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    name="loginemail"
-                    value={loginValues.loginemail}
-                    type="email"
-                    placeholder="Enter email"
-                    onChange={handleLogin}
-                  />
-                </Form.Group>
-                {loginError.loginemail && <small className="error-tag">{loginError.loginemail}</small> }
-                <br></br>
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <div className="pass-wrapper">
-                    <Form.Control
-                      name="password"
-                      value={loginValues.password}
-                      type={passwordShow ? "text" : "password"}
-                      placeholder="Password"
-                      onChange={handleLogin}
-                    />
-                    <i onClick={togglePassword}>
-                      {passwordShow ? eye : eyeSlash}
-                    </i>
-                  </div>
-                </Form.Group>
-                {loginError.password && <small className="error-tag">{loginError.password}</small>}
-                <br></br>
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check
-                    name="rememberme"
-                    type="checkbox"
-                    label="Remember Me !!"
-                    onChange={handleRememberMe}
-                  />
-                </Form.Group>
-                <br></br>
-                <hr />
-                <div className="footer">
-                  <Button variant="primary" type="submit">
-                    Submit
+  const handleLogin = (e) => {
+    const value = e.target.value;
+    setLoginValues({
+      ...loginValues,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
+      history.push("/dashboard")
+    }
+  };
+
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked ? "checked" : "unchecked");
+    if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
+      localStorage.setItem("LoginData", JSON.stringify(loginValues))
+    }
+  };
+
+  const togglePassword = () => {
+    setPasswordShow(passwordShow ? false : true);
+  };
+
+  const validateOnType = () => {
+    setLoginError(validate(loginValues, props.isregistered))
+  }
+
+  return (
+    <>
+      <Card className="formwrapper">
+        <div className="icon">
+          <img
+            src={lock}
+            alt="lock"
+            style={{ height: "100px", width: "100px" }}
+          />
+        </div>
+        <hr />
+        <Form onSubmit={handleLoginSubmit} onKeyUp={validateOnType}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              name="loginemail"
+              value={loginValues.loginemail}
+              type="email"
+              placeholder="Enter email"
+              onChange={handleLogin}
+            />
+          </Form.Group>
+          {loginError.loginemail && <small className="error-tag">{loginError.loginemail}</small>}
+          <br></br>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <div className="pass-wrapper">
+              <Form.Control
+                name="password"
+                value={loginValues.password}
+                type={passwordShow ? "text" : "password"}
+                placeholder="Password"
+                onChange={handleLogin}
+              />
+              <i onClick={togglePassword}>
+                {passwordShow ? eye : eyeSlash}
+              </i>
+            </div>
+          </Form.Group>
+          {loginError.password && <small className="error-tag">{loginError.password}</small>}
+          <br></br>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check
+              name="rememberme"
+              type="checkbox"
+              label="Remember Me !!"
+              onChange={handleRememberMe}
+            />
+          </Form.Group>
+          <br></br>
+          <hr />
+          <div className="footer">
+            <Button variant="primary" type="submit">
+              Submit
                   </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={props.setisregister}
-                  >
-                    Register here !!
+            <Button
+              variant="secondary"
+              onClick={props.setisregister}
+            >
+              Register here !!
                   </Button>
-                </div>
-              </Form>
-            </Card>
-        </>
-    )
+          </div>
+        </Form>
+      </Card>
+    </>
+  )
 }
 
 export default Loginform

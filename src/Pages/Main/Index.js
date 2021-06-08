@@ -67,19 +67,19 @@ function Index() {
   return (
     <>
       {load ? (
-        <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
       ) : (
         <Container fluid>
           <Row>
-          <Navbar/>
+            <Navbar />
             <Col md={{ span: 10, offset: 1 }}>
-            <h3 className="heading">Champions</h3>
+              <h2 className="heading">Champions</h2>
               <div className="headerwrap">
                 {img.map((item) => {
                   //  Counter(item.id)
                   let value = margintop();
                   return (
-                  <Animation key={item.id} id={item.id} value={value} name={item.name}/>
+                    <Animation key={item.id} id={item.id} value={value} name={item.name} />
                   );
                 })}
               </div>
