@@ -47,6 +47,7 @@ function RegisterForm(props) {
     const validateOnType = () => {
         setRegisterError(validate(registerValues, props.isregistered))
     }
+    console.log(registerValues)
     return (
         <>
             <Card className="formwrapper">
@@ -97,7 +98,7 @@ function RegisterForm(props) {
                     </Form.Group>
                     {registerError.phone && <small className="error-tag">{registerError.phone}</small>}
                     <br />
-                    <Form.Group>
+                    <Form.Group controlId="formFileSm">
                         <Form.File
                             onChange={handleFile}
                             type="file"
@@ -108,12 +109,13 @@ function RegisterForm(props) {
                     <br />
                     <Form.Group>
                         <Form.Control
+                            className="w-50 p-2"
                             name="role"
                             as="select"
                             custom
                             onChange={handleRegister}
                         >
-                            <option value="Select">Select</option>
+                            <option>Select Role</option>
                             <option value="CTO">CTO</option>
                             <option value="Director">Director</option>
                             <option value="Team Lead">Team Lead</option>

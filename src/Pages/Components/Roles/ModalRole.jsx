@@ -6,7 +6,7 @@ function ModalRole(props) {
     return (
         <>
             <Modal show={props.showModal} onHide={handleCloseModal} centered>
-                <Modal.Header>
+                <Modal.Header className="role-modal-header">
                     <Modal.Title>
                         {props.modalType === "add" && "Add New Role"}
                         {props.modalType === "edit" && "Edit Role"}

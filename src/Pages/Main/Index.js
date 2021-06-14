@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import Axios from "axios";
 import "./mainStyle.scss";
 // import { gsap } from "gsap";
-import { Card, Container, Row, Col } from "react-bootstrap";
-import Loader from "react-loader-spinner";
+import {Container, Row, Col } from "react-bootstrap";
+import Loader from "../../Services/Loader";
 import Navbar from "../Navigation/Navbar"
 // import styled from "styled-components";
 import Animation from "./Animation"
@@ -67,7 +67,7 @@ function Index() {
   return (
     <>
       {load ? (
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <Loader />
       ) : (
         <Container fluid>
           <Row>

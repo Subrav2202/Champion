@@ -13,7 +13,7 @@ function SideBar({ collapse, setCollapse }) {
   useEffect(() => {
     const temp = JSON.parse(localStorage.getItem('LoginData'));
     setRoleData(temp.role)
-    if (temp.role === "admin") {
+    if (temp.role === "Admin") {
       setData(SidebarAdminData)
     }
     else if (temp.role === "TL") {
