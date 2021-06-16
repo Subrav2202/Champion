@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import Axios from "../../../Services/Dataservices";
+// import Axios from "../../../Services/Dataservices";
 
 function HistoryContent() {
     const historydata = [

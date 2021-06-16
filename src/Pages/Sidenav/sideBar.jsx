@@ -8,11 +8,9 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 function SideBar({ collapse, setCollapse }) {
-  const [roleData, setRoleData] = useState()
   const [data,setData] = useState()
   useEffect(() => {
     const temp = JSON.parse(localStorage.getItem('LoginData'));
-    setRoleData(temp.role)
     if (temp.role === "Admin") {
       setData(SidebarAdminData)
     }
@@ -22,9 +20,7 @@ function SideBar({ collapse, setCollapse }) {
     else if (temp.role === "Employee") {
       setData(SidebarEmpData)
     }
-
-
-  })
+  },[])
   return (
     <>
       {

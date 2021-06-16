@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./mainStyle.scss";
 // import { gsap } from "gsap";
 import {Container, Row, Col } from "react-bootstrap";

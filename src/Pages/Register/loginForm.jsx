@@ -30,13 +30,13 @@ function Loginform(props) {
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
       history.push("/dashboard")
     }
+    if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0 && rememberMe === "checked") {
+      localStorage.setItem("LoginData", JSON.stringify(loginValues))
+    }
   };
 
   const handleRememberMe = (e) => {
     setRememberMe(e.target.checked ? "checked" : "unchecked");
-    if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
-      localStorage.setItem("LoginData", JSON.stringify(loginValues))
-    }
   };
 
   const togglePassword = () => {

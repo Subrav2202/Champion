@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./regStyle.scss";
-import champion from "../../Assets/champ.jpg";
+import champion from "../../Assets/champ5.png";
 import {
   Container,
   Row,
@@ -17,8 +17,8 @@ function Register() {
     <Container fluid>
       <Row style={{ width: "100%" }}>
         <Col md={6} className="colwrapper">
-          <Card className="champwrapper">
-            <Card.Img variant="top" className="champs" src={champion} />
+          <div className="champwrapper">
+            <img className="champs" src={champion} />
             <Card.Body>
               <Card.Text className="champbody">
                 A champion is someone who gets up when he can't.
@@ -26,7 +26,7 @@ function Register() {
               <br />
               <Link to="">Employee portal !! </Link>
             </Card.Body>
-          </Card>
+          </div>
         </Col>
         <Col md={6} className="colwrapper">
           {isregistered ? (

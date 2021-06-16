@@ -22,7 +22,12 @@ body {
 		background-position: 0% 50%;
 	}
 }
-
+.btn-default:active, .btn-default:focus {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+	outline: 0;
+  }
 // html{
 //   font-size:100%; 
 // }
