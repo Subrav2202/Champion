@@ -1,5 +1,5 @@
-import React,{useEffect,useRef} from "react";
-import { Card } from "react-bootstrap";
+import React from "react";
+// import { Card } from "react-bootstrap";
 // import { gsap } from "gsap";
 
 

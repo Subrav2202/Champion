@@ -1,40 +1,40 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-function HistoryContent() {
+function HistoryTL() {
     const historydata = [
         {
-            nominated: "Vishal Yadav",
+            champions: "Champion1",
             date: "15/05/2021"
         },
         {
-            nominated: "Vishal Rindhe",
+            champions: "Champion2",
             date: "15/05/2021"
         },
         {
-            nominated: "Subrao Jadhav",
+            champions: "Champion3",
             date: "15/05/2021"
         },
         {
-            nominated: "Prashant Sawant",
+            champions: "Champion4",
             date: "15/05/2021"
         },
         {
-            nominated: "Ashutosh Sarangi",
+            champions: "Champion5",
             date: "15/05/2021"
         },
         {
-            nominated: "Vishal Yadav",
+            champions: "Champion6",
             date: "15/05/2021"
         },
     ]
     return (
         <>
-            <Table striped bordered hover> 
-                <thead>
+            <Table striped bordered hover style={{border: "black"}}> 
+                <thead style={{backgroundColor: "#1a152e",color :"white"}}>
                     <tr align="center">
                         <th>Sr no.</th>
-                        <th>Nominated</th>
+                        <th>Champions</th>
                         <th>Date</th>
                     </tr>
                 </thead>
@@ -44,7 +44,7 @@ function HistoryContent() {
                             return (
                                 <tr key={index} align="center">
                                     <td>{index + 1}</td>
-                                    <td>{val.nominated}</td>
+                                    <td>{val.champions}</td>
                                     <td>{val.date}</td>
                                 </tr>
                             )
@@ -56,4 +56,4 @@ function HistoryContent() {
     )
 }
 
-export default HistoryContent
+export default HistoryTL

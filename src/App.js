@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/register"><Register/></Route>
         <Route exact path="/profile"><Profile/></Route>
         <Route exact path="/dashboard"><Dashboard/></Route>
-        <Route exact path="/employee"><Employee/></Route>
+        <Route exact path="/teammates"><Employee/></Route>
         <Route exact path="/roles"><Roles/></Route>
         <Route exact path="/history"><History/></Route>
       </Switch>

@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { IoIosPerson } from "react-icons/io";
-import { MdEmail, MdPhone } from "react-icons/md";
-import { BsPeopleCircle } from "react-icons/bs";
 import Nominatemodal from "./nominateModel"
 import InfoModal from "./InfoModal"
 
@@ -12,8 +9,8 @@ function EmployeeCard() {
   return (
     <>
       <Card className="employee-cardWrapper">
-        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80" id="background-img" />
-        <img src="https://source.unsplash.com/random" className="user-image" />
+        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80" id="background-img" alt="empbackimg" />
+        <img src="https://source.unsplash.com/random" className="user-image" alt="empimg" />
         <div id="card-body">
           <h3 className="employee-cardname">Vishal Yadav</h3>
           <br />

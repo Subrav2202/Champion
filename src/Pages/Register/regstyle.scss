@@ -16,7 +16,6 @@ input::-webkit-inner-spin-button {
     border-radius: 10px;
     width:80%;
     box-shadow: 10px 10px 15px  rgba(105, 102, 102, 0.815);
-    // background-color: transparent;
 }
 .icon{
     @include vhalign;
@@ -26,11 +25,11 @@ input::-webkit-inner-spin-button {
     justify-content:space-between
 }
 .champs{
-    width:auto;
-    height:50vh
+    width: 100%;
+    height: 70%;
 }
 .champwrapper{ 
-    height:80vh;
+    height:90%;
     position:relative;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }

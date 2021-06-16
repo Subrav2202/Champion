@@ -3,7 +3,7 @@
 
 .sidebarwrapper {
 
-    background-color: #1a152e;
+    background-color: $sidebarBodyColor;
     height: 100%;
     min-height: 100vh;
     z-index: 100;
@@ -14,7 +14,7 @@
         justify-content: space-around;
         color: mintcream;
         height: 70px;
-        background: linear-gradient(135deg, #ffa402 1%, #fe5eab 100%);
+        background: $sidebarHeaderColor;
         font-size: $font_size * (1.5);
     }
     .nav-text {

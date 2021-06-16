@@ -3,11 +3,16 @@ import SideBar from "../../Sidenav/sideBar";
 import "./historyStyle.scss";
 import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
-import HistoryContent from "./HistoryContent";
+import HistoryEmp from "./HistoryEmp";
+import Header from "../Header/Header";
+import HistoryTL from "./HistoryTL";
 // import EmployeeCard from "./employeeCard";
 
 function History() {
   const [collapse, setCollapse] = useState(false);
+  const logindata = JSON.parse(localStorage.getItem("LoginData"));
+  const role = logindata.role;
+
   return (
     <>
       <Container fluid className="main-container">
@@ -16,7 +21,7 @@ function History() {
             <HistoryGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={collapse ? 11 : 10} className="p-0">
-            <HistoryGridBody />
+            <HistoryGridBody role={role}/>
           </Col>
         </Row>
       </Container>
@@ -35,17 +40,17 @@ function HistoryGridHeader({ collapse, setCollapse }) {
   )
 }
 
-function HistoryGridBody() {
+function HistoryGridBody({ role }) {
+  
   return (
     <>
-      <div className="header">
-        <h4>History</h4>
-        </div>
-        <div className="d-flex my-3 px-2">
+      <Header title="History" />
+      <div className="d-flex my-3 px-2">
         <Container>
           <Row>
             <Col md={{ span: 10, offset: 1 }}>
-                <HistoryContent/>
+              {role === "Employee" && <HistoryEmp />}
+              {role === "TL" && <HistoryTL/>}
             </Col>
           </Row>
         </Container>

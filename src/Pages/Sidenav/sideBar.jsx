@@ -1,11 +1,26 @@
-import React from "react";
-import { SidebarData } from "./sideBarData";
+import React, { useEffect, useState } from "react";
+import { SidebarAdminData } from "./sideBarData";
+import { SidebarTLData } from "./sideBarData";
+import { SidebarEmpData } from "./sideBarData";
 import "./sideBarStyle.scss";
 import { FaRegWindowClose } from "react-icons/fa"
 import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 function SideBar({ collapse, setCollapse }) {
+  const [data,setData] = useState()
+  useEffect(() => {
+    const temp = JSON.parse(localStorage.getItem('LoginData'));
+    if (temp.role === "Admin") {
+      setData(SidebarAdminData)
+    }
+    else if (temp.role === "TL") {
+      setData(SidebarTLData)
+    }
+    else if (temp.role === "Employee") {
+      setData(SidebarEmpData)
+    }
+  },[])
   return (
     <>
       {
@@ -14,7 +29,7 @@ function SideBar({ collapse, setCollapse }) {
             <div className="sidebarheader">
               <AiOutlineMenu onClick={setCollapse} />
             </div>
-            {SidebarData.map((item, index) => {
+            {data && data.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <NavLink className="linkWrapper" activeStyle={{ backgroundColor: "#13223b" }} to={item.path}>
@@ -30,7 +45,7 @@ function SideBar({ collapse, setCollapse }) {
               <h3>NeoSOFT</h3>
               <FaRegWindowClose onClick={setCollapse} />
             </div>
-            {SidebarData.map((item, index) => {
+            {data && data.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <NavLink className="linkWrapper" activeStyle={{ backgroundColor: "#294463" }} to={item.path}>

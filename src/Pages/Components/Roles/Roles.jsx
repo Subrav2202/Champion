@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import { Button,Table } from "react-bootstrap";
 import ModalRole from "./ModalRole";
 import './roleStyle.scss'
 
@@ -45,9 +45,9 @@ function Roles() {
         <>
             <div>
                 <Button className="add-btn" onClick={() => handleAddModal("add")} >Add</Button><br/>
-                <Table striped bordered hover variant="dark" responsive="md">
-                    <thead>
-                        <tr>
+                <Table striped bordered hover style={{border: "black"}}>
+                    <thead style={{backgroundColor: "#1a152e",color :"white"}}>
+                        <tr align="center">
                             <th>Sr no.</th>
                             <th>Roles</th>
                             <th>Description</th>
@@ -59,8 +59,8 @@ function Roles() {
                             data.map((val,index) => {
                                 return (
                                     <tr key={index}>
-                                    <td>{index+1}</td>
-                                    <td>{val.role}</td>
+                                    <td align="center">{index+1}</td>
+                                    <td align="center">{val.role}</td>
                                     <td>{val.description}</td>
                                     <td>
                                         <Button onClick={() => handleEditModal(val,"edit")} className="edit-btn">Edit</Button>

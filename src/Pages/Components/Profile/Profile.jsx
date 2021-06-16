@@ -4,6 +4,7 @@ import "./ProfileStyle.scss"
 import '../componentStyle.scss';
 import { Container, Row, Col } from "react-bootstrap";
 import SideBar from "../../Sidenav/sideBar";
+import Header from "../Header/Header";
 
 function Profile() {
   const [collapse, setCollapse] = useState(false);
@@ -27,9 +28,7 @@ export default Profile;
 function ProfileGridBody() {
   return (
     <>
-      <div className="header">
-        <h4>Profile</h4>
-      </div>
+      <Header title="Profile" />
       <div className="d-flex" style={{ height: "85%" }}>
         <div className="d-flex justify-content-center align-items-center">
           <ProfileCard />

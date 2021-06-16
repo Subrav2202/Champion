@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./regStyle.scss";
 import lock from "../../Assets/lock.png";
 import validate from './validate'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import {
     Form,
     Button,
@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 
 function RegisterForm(props) {
-    const history = useHistory()
+    // const history = useHistory()
     const [registerError, setRegisterError] = useState({})
 
     const [registerValues, setRegisterValues] = useState({
@@ -38,12 +38,16 @@ function RegisterForm(props) {
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        setRegisterError(validate(registerValues, props.isregistered))
-        //   if (Object.keys(registerError).length === 0) {
-        localStorage.setItem("user", JSON.stringify(registerValues))
-        history.push("/profile")
-        //   }
+        if (registerValues.fullname !== "" && registerValues.registeremail !== "" && registerValues.phone !== "" && registerValues.role !== "" && Object.keys(registerError).length === 0) {
+            localStorage.setItem("user", JSON.stringify(registerValues))
+            props.setisregister();
+        }
     };
+
+    const validateOnType = () => {
+        setRegisterError(validate(registerValues, props.isregistered))
+    }
+    console.log(registerValues)
     return (
         <>
             <Card className="formwrapper">
@@ -56,7 +60,7 @@ function RegisterForm(props) {
                 </div>
                 <hr />
 
-                <Form onSubmit={handleRegisterSubmit}>
+                <Form onSubmit={handleRegisterSubmit} onKeyUp={validateOnType}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control
@@ -94,7 +98,7 @@ function RegisterForm(props) {
                     </Form.Group>
                     {registerError.phone && <small className="error-tag">{registerError.phone}</small>}
                     <br />
-                    <Form.Group>
+                    <Form.Group controlId="formFileSm">
                         <Form.File
                             onChange={handleFile}
                             type="file"
@@ -105,12 +109,13 @@ function RegisterForm(props) {
                     <br />
                     <Form.Group>
                         <Form.Control
+                            className="w-50 p-2"
                             name="role"
                             as="select"
                             custom
                             onChange={handleRegister}
                         >
-                            <option value="Select">Select</option>
+                            <option>Select Role</option>
                             <option value="CTO">CTO</option>
                             <option value="Director">Director</option>
                             <option value="Team Lead">Team Lead</option>

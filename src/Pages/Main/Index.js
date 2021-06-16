@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import Axios from "axios";
+import React, { useEffect, useState} from "react";
+// import Axios from "axios";
 import "./mainStyle.scss";
 // import { gsap } from "gsap";
-import { Card, Container, Row, Col } from "react-bootstrap";
-import Loader from "react-loader-spinner";
+import {Container, Row, Col } from "react-bootstrap";
+import Loader from "../../Services/Loader";
 import Navbar from "../Navigation/Navbar"
 // import styled from "styled-components";
 import Animation from "./Animation"
@@ -67,19 +67,19 @@ function Index() {
   return (
     <>
       {load ? (
-        <Loader type="Puff" color="#00BFFF" height={100} width={100}/>
+        <Loader />
       ) : (
         <Container fluid>
           <Row>
-          <Navbar/>
+            <Navbar />
             <Col md={{ span: 10, offset: 1 }}>
-            <h3 className="heading">Champions</h3>
+              <h2 className="heading">Champions</h2>
               <div className="headerwrap">
                 {img.map((item) => {
                   //  Counter(item.id)
                   let value = margintop();
                   return (
-                  <Animation key={item.id} id={item.id} value={value} name={item.name}/>
+                    <Animation key={item.id} id={item.id} value={value} name={item.name} />
                   );
                 })}
               </div>

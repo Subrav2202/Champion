@@ -12,3 +12,6 @@
 .delete-btn{
     width: 90%;
 }
+.role-modal-header{
+    @include modal-header;
+}
