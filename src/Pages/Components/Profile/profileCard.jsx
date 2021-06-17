@@ -5,6 +5,7 @@ import { IoIosPerson } from "react-icons/io";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { BsPeopleCircle } from "react-icons/bs";
 import ProfileModal from "./profileModal";
+import DefaultProfileImg from "../../../Assets/profile.jpeg"
 
 function ProfileCard() {
   const [show, setshow] = useState(false);
@@ -15,11 +16,8 @@ function ProfileCard() {
     <>
       <Card className="profile-cardWrapper">
         <Card.Header className="imagealign">
-          <Card.Img
-            variant="top"
-            src="https://source.unsplash.com/random"
-            className="cardImage"
-          />
+          {/* <Card.Img variant="top" src="https://source.unsplash.com/random" className="cardImage" /> */}
+          <Card.Img variant="top" src={DefaultProfileImg} alt="profileImg" className="cardImage" />
         </Card.Header>
 
         <Card.Body className="w-100">

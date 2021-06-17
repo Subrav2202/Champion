@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Button,Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import ModalRole from "./ModalRole";
 import './roleStyle.scss'
 

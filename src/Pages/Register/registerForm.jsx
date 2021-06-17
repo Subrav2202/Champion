@@ -12,6 +12,7 @@ import {
 function RegisterForm(props) {
     // const history = useHistory()
     const [registerError, setRegisterError] = useState({})
+    const [file,setFile] = useState()
 
     const [registerValues, setRegisterValues] = useState({
         fullname: "",
@@ -31,10 +32,22 @@ function RegisterForm(props) {
             };
         });
     };
-
+    
     const handleFile = (e) => {
-        // const file = e.target.files[0]
-        console.log(e.target.files[0].name)
+        const file = URL.createObjectURL(e.target.files[0])
+        // setFile(URL.createObjectURL(file))
+
+        setRegisterValues((registerValues) => {
+            return {
+                ...registerValues,
+                [e.target.name]: file
+            };
+        });
+        // const formData = new FormData();
+
+		// console.log(formData.append('File', file))
+        // console.log(e.target.files[0].name)
+        // console.log(e)
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
@@ -59,7 +72,7 @@ function RegisterForm(props) {
                     />
                 </div>
                 <hr />
-
+                <img src={file && file}/>
                 <Form onSubmit={handleRegisterSubmit} onKeyUp={validateOnType}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Full Name</Form.Label>
@@ -103,6 +116,7 @@ function RegisterForm(props) {
                             onChange={handleFile}
                             type="file"
                             accept="image/png, image/jpeg"
+                            name="image"
                         // required
                         />
                     </Form.Group>
