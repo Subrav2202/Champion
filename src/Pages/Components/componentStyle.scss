@@ -10,3 +10,6 @@
 .slide {
     @include sidebar-slide;
 }
+.side-nav{
+    --bs-gutter-x: 0;
+}

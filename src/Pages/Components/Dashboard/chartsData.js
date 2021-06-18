@@ -74,19 +74,19 @@ export const chartsarray = [
 
 export const recentVotes = [
   {
-    name: "vishal",
-    y: 5,
+    username: "vishal",
+    votes: 5,
   },
   {
-    name: "Subrao",
-    y: 8,
+    username: "Subrao",
+    votes: 8,
   },
   {
-    name: "Abhishek",
-    y: 3,
+    username: "Abhishek",
+    votes: 3,
   },
   {
-    name: "Nishant",
-    y: 5,
+    username: "Nishant",
+    votes: 5,
   },
 ];

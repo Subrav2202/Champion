@@ -5,6 +5,10 @@ import {recentVotes} from "./chartsData"
 
 function Piechart() {
     // console.log(recentVotes)
+    var formattedUserDetails = recentVotes.map((val) => ({
+      name:val.username,
+      y:val.votes
+    }));
     const options = {
         chart: {
           type: "pie",
@@ -23,7 +27,7 @@ function Piechart() {
         },
         series: [
           {
-            data:recentVotes,
+            data:formattedUserDetails,
             name: 'Votes',
             showInLegend: false,
           },

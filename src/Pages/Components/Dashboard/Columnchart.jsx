@@ -20,11 +20,6 @@ function Columncharts({month}) {
     chart: {
       type: "column",
       zoomType: "xy",
-      options3D: {
-        alpha: 1,
-        beta: 10,
-        depth: 1000,
-      },
     },
     title: {
       text: `Weekly Votes of ${month ? month : currentMonth}`,

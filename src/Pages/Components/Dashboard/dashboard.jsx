@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import SideBar from "../../Sidenav/sideBar";
 import "./dashboardStyle.scss";
 import '../componentStyle.scss';
@@ -15,17 +15,17 @@ import Piechart from "./Piechart"
 function Dashboard() {
   const [collapse, setCollapse] = useState(false);
   const [month, setmonth] = useState()
-  
+
   return (
     <>
       <Container fluid className="main-container">
         {/* <Row className="side-nav p-0 maincontent"> */}
-        <Row className="side-nav p-0">
-          <Col md={collapse ? 1 : 2} className="slide">
+        <Row className="side-nav p-0" style={{ position: "relative" }}>
+          <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
             <DashboardGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
-          <Col md={collapse ? 11 : 10} className="p-0">
-            <DashboardGridBody  month={month} setmonth={(val) => setmonth(val)} />
+          <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
+            <DashboardGridBody month={month} setmonth={(val) => setmonth(val)} />
           </Col>
         </Row>
       </Container>
@@ -44,48 +44,48 @@ function DashboardGridHeader({ collapse, setCollapse }) {
   )
 }
 
-function DashboardGridBody({setmonth, month}) {
+function DashboardGridBody({ setmonth, month }) {
   return (
-    <>  
+    <>
       {/* style={{width:"inherit",position:"absolute"}} */}
       <Header title="Dashboard" />
       <div className="d-flex my-3 px-2" >
         <Container fluid className="p-0">
           <Row>
-            <Col md={{ span: 8, offset: 1 }}>
+            <Col md={{ span: 7 }}>
               {/* <dashboardContent/> */}
-              <Card>
+              <Card style={{position: "relative"}}>
+                <Accordion style={{ position: "absolute",zIndex: "1",right: "2%",top: "2%" }}>
+                  <Card>
+                    <Accordion.Toggle className="accordion-header" as={Button} eventKey="0">
+                      {month ? month : "Months"} <BsChevronDown />
+                    </Accordion.Toggle>
+                    {
+                      chartsarray.map((item, index) => {
+                        return (
+                          <Accordion.Collapse eventKey="0" key={index} style={{ cursor: "pointer" }}>
+                            <Card.Body onClick={() => setmonth(item.month)}>{item.month}</Card.Body>
+                          </Accordion.Collapse>
+                        )
+                      })
+                    }
+                  </Card>
+                </Accordion>
                 <Card.Body>
                   {/* <HighchartsReact highcharts={highcharts} options={options} /> */}
-                  <Columnchart month={month}/>
+                  <Columnchart month={month} />
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={{ span: 3 }} className="d-flex justify-content-center">
-              <Accordion style={{width:"50%"}}>
-                <Card>
-                  <Accordion.Toggle className="accordion-header" as={Button} eventKey="0">
-                    {month ? month : "Months"} <BsChevronDown />
-                  </Accordion.Toggle>
-                  {
-                    chartsarray.map((item, index) => {
-                      return (
-                        <Accordion.Collapse eventKey="0" key={index} style={{ cursor: "pointer" }}>
-                          <Card.Body onClick={() => setmonth(item.month)}>{item.month}</Card.Body>
-                        </Accordion.Collapse>
-                      )
-                    })
-                  }
-                </Card>
-              </Accordion>
-            </Col>
-            <Col md={{ span: 4, offset: 1 }}>
-            <Card>
+            <Col md={{ span: 5 }}>
+              <Card>
                 <Card.Body>
                   <Piechart />
                 </Card.Body>
               </Card>
             </Col>
+            {/* <Col md={{ span: 2 }} className="d-flex justify-content-center"> */}
+            {/* </Col> */}
           </Row>
         </Container>
       </div>
