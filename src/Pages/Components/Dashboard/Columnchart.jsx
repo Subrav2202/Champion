@@ -1,7 +1,7 @@
 import React from 'react'
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { chartsarray } from './chartsData'
+import { chartsarray } from './ChartsData'
 
 function Columncharts({month}) {
   let items = [];

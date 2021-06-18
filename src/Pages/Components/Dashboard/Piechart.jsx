@@ -1,7 +1,7 @@
 import React from 'react'
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {recentVotes} from "./chartsData"
+import {recentVotes} from "./ChartsData"
 
 function Piechart() {
     // console.log(recentVotes)

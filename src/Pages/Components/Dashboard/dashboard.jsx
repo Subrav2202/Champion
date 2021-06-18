@@ -6,7 +6,7 @@ import { Container, Row, Col, Accordion, Card, Button } from "react-bootstrap";
 import Header from '../Header/Header'
 // import Highcharts from "highcharts";
 // import HighchartsReact from "highcharts-react-official";
-import { chartsarray } from './chartsData'
+import { chartsarray } from './ChartsData'
 import { BsChevronDown } from 'react-icons/bs'
 // import EmployeeCard from "./employeeCard";
 import Columnchart from "./Columnchart"
