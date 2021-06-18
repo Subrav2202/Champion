@@ -12,11 +12,11 @@ function RolesMain() {
     return (
         <>
             <Container className="main-container" fluid>
-                <Row>
-                    <Col md={collapse ? 1 : 2} className="slide">
+                <Row className="side-nav p-0" style={{ position: "relative" }}>
+                    <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
                         <RolesGridHeader collapse={collapse} setCollapse={setCollapse} />
                     </Col>
-                    <Col md={collapse ? 11 : 10} className="p-0">
+                    <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
                         <RolesGridBody />
                     </Col>
                 </Row>

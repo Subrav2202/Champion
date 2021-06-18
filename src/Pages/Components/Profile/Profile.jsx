@@ -10,11 +10,11 @@ function Profile() {
   const [collapse, setCollapse] = useState(false);
   return (
     <Container className="main-container" fluid>
-      <Row >
-        <Col md={collapse ? 1 : 2} className="slide">
+      <Row className="side-nav p-0" style={{ position: "relative" }}>
+        <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
           <ProfileGridHeader collapse={collapse} setCollapse={setCollapse} />
         </Col>
-        <Col md={collapse ? 11 : 10} className="p-0">
+        <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1" style={{height: '100vh'}}>
           <ProfileGridBody />
         </Col>
       </Row>
@@ -29,9 +29,9 @@ function ProfileGridBody() {
   return (
     <>
       <Header title="Profile" />
-      <div style={{height: "85%"}} className="d-flex justify-content-center align-items-center">
+      <div style={{ height: "85%" }} className="d-flex justify-content-center align-items-center">
         {/* <div className="d-flex justify-content-center align-items-center"> */}
-          <ProfileCard />
+        <ProfileCard />
         {/* </div> */}
       </div>
     </>
