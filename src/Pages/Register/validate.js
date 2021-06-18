@@ -19,7 +19,7 @@ export default function validate(val,isregistered) {
         if (val.phone === '') {
             errors.phone = "Please Enter Phone number"
         }
-        else if (!/[0-9]{10,10}$/.test(val.phone)) {
+        else if (!/^[0-9]{10,10}$/.test(val.phone)) {
             errors.phone = "Phone number should be of length 10"
         }
     }
