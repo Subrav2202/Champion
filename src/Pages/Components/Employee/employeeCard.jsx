@@ -16,13 +16,13 @@ function EmployeeCard() {
           <br />
           <div className="nominate-history-wrapper">
             <div className="no-of-nomination">
-              <div className="w-100">
+              <div>
                 <h4 className="d-flex justify-content-center">10</h4>
                 <small className="d-flex justify-content-center">Nominated</small>
               </div>
             </div>
             <div className="total-nomination">
-              <div className="w-100">
+              <div>
                 <h4 className="d-flex justify-content-center">40</h4>
                 <small className="d-flex justify-content-center">Total Nominations</small>
               </div>

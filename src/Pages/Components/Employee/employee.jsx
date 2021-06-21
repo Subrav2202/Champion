@@ -52,7 +52,7 @@ function EmployeeGridBody() {
     <>
       <Header title="Employee details" />
       <div className="d-flex my-3 px-2">
-        <Container>
+        {/* <Container> */}
           <Row className="gy-3 gx-4 justify-content-center">
             <Col md={4} sm={6}>
               <EmployeeCard />
@@ -70,7 +70,7 @@ function EmployeeGridBody() {
               <EmployeeCard />
             </Col>
           </Row>
-        </Container>
+        {/* </Container> */}
       </div>
     </>
   )
