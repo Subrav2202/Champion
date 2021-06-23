@@ -23,8 +23,8 @@ function Employee() {
             </div>
           </Col>
         </Row> */}
-        <Row className="side-nav p-0" style={{ position: "relative" }}>
-          <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
+        <Row className="side-nav p-0" style={{ position: "relative"}}>
+          <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed"}}>
             <EmployeeGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
@@ -52,7 +52,7 @@ function EmployeeGridBody() {
     <>
       <Header title="Employee details" />
       <div className="d-flex my-3 px-2">
-        {/* <Container> */}
+        <Container fluid>
           <Row className="gy-3 gx-4 justify-content-center">
             <Col md={4} sm={6}>
               <EmployeeCard />
@@ -70,7 +70,7 @@ function EmployeeGridBody() {
               <EmployeeCard />
             </Col>
           </Row>
-        {/* </Container> */}
+        </Container>
       </div>
     </>
   )

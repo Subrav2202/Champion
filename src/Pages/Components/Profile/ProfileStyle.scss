@@ -14,6 +14,7 @@
     color: white;
     .imagealign {
       @include vhalign;
+      width:100%;
       border-bottom: rgb(236, 227, 227) solid 1px;
       .cardImage {
         width: 31%;
