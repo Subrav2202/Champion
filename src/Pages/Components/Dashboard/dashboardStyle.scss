@@ -1,17 +1,8 @@
 @import "../../mixin";
 
-.btn-check:focus+.btn-primary, .btn-primary:focus, .btn-primary,.btn-primary:hover{
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
     box-shadow: none;
-    border-color: gray;
-    background-color: white;
-    color: black;
-}
-
-.accordion-header,.accordion-header:hover{
-    color:black;
-    background-color: white;
-    @include valign;
-    justify-content: space-around;
 }
 // .maincontent{
 //     --bs-gutter-x:0;

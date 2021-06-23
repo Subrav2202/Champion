@@ -40,7 +40,7 @@ function Loginform(props) {
   };
 
   const togglePassword = () => {
-    setPasswordShow(passwordShow ? false : true);
+    setPasswordShow(!passwordShow);
   };
 
   const validateOnType = () => {

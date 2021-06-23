@@ -1,24 +1,35 @@
 import React, { useState } from "react";
 import "./regStyle.scss";
 import lock from "../../Assets/lock.png";
+import { eye, eyeSlash } from "../constant";
 import validate from './validate'
 // import { useHistory } from "react-router-dom";
 import {
     Form,
     Button,
     Card,
+    Row,
+    Col
 } from "react-bootstrap";
+import axios from "axios";
 
 function RegisterForm(props) {
     // const history = useHistory()
     const [registerError, setRegisterError] = useState({})
-    const [file,setFile] = useState()
+    const [imageFile, setImageFile] = useState()
+    const [passwordShow, setPasswordShow] = useState({
+        pass: false,
+        cpass: false
+    });
 
     const [registerValues, setRegisterValues] = useState({
-        fullname: "",
-        registeremail: "",
-        phone: "",
-        image: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        avatar: "",
+        password: "",
+        confirmpass: "",
+        // phone: "",
         role: "",
     });
 
@@ -32,35 +43,65 @@ function RegisterForm(props) {
             };
         });
     };
-    
+
     const handleFile = (e) => {
-        const file = URL.createObjectURL(e.target.files[0])
-        // setFile(URL.createObjectURL(file))
-
-        setRegisterValues((registerValues) => {
-            return {
-                ...registerValues,
-                [e.target.name]: file
-            };
-        });
-        // const formData = new FormData();
-
-		// console.log(formData.append('File', file))
-        // console.log(e.target.files[0].name)
-        // console.log(e)
+        let file = e.target.files[0];
+        setImageFile(file)
     }
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        if (registerValues.fullname !== "" && registerValues.registeremail !== "" && registerValues.phone !== "" && registerValues.role !== "" && Object.keys(registerError).length === 0) {
-            localStorage.setItem("user", JSON.stringify(registerValues))
+        if (registerValues.firstName !== "" && registerValues.lastName !== "" && registerValues.email !== "" && registerValues.password !== "" && registerValues.confirmpass !== "" && registerValues.role !== "" && Object.keys(registerError).length === 0) {
+            // localStorage.setItem("user", JSON.stringify(registerValues))
+            const formData = new FormData();
+            formData.append('avatar', imageFile)
+            axios.post("http://localhost:3000/user/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+                .then((res) => {
+                    setRegisterValues((val) => {
+                        val.avatar = res.data;
+                        return val;
+                    })
+                    axios.post("http://localhost:3000/user/register", registerValues, {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                        .then((res) => {
+                            console.log(res)
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
             props.setisregister();
         }
-    };
 
+    };
+// console.log(passwordShow)
     const validateOnType = () => {
         setRegisterError(validate(registerValues, props.isregistered))
     }
-    console.log(registerValues)
+
+    const togglePassword = (passtype) => {
+        if (passtype === "pass") {
+            setPasswordShow((value) => {
+                let pass = !value.pass;
+                return { ...value,pass }
+            });
+        }
+        else {
+            setPasswordShow((value) => {
+                let cpass = !value.cpass;
+                return { ...value,cpass }
+            });
+        }
+    };
     return (
         <>
             <Card className="formwrapper">
@@ -72,33 +113,83 @@ function RegisterForm(props) {
                     />
                 </div>
                 <hr />
-                <img src={file && file}/>
                 <Form onSubmit={handleRegisterSubmit} onKeyUp={validateOnType}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Full Name</Form.Label>
-                        <Form.Control
-                            name="fullname"
-                            value={registerValues.fullname}
-                            type="text"
-                            placeholder="Enter Full Name"
-                            onChange={handleRegister}
-                        />
-                    </Form.Group>
-                    {registerError.fullname && <small className="error-tag">{registerError.fullname}</small>}
-                    <br />
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
-                            name="registeremail"
-                            value={registerValues.registeremail}
+                            name="email"
+                            value={registerValues.email}
                             type="email"
                             placeholder="Enter email"
                             onChange={handleRegister}
                         />
                     </Form.Group>
-                    {registerError.registeremail && <small className="error-tag">{registerError.registeremail}</small>}
+                    {registerError.email && <small className="error-tag">{registerError.email}</small>}
                     <br />
                     <Form.Group controlId="formBasicEmail">
+                        <Row>
+                            <Col>
+                                <Form.Label>Firstname</Form.Label>
+                                <Form.Control
+                                    name="firstName"
+                                    value={registerValues.firstName}
+                                    type="text"
+                                    placeholder="Enter firstName"
+                                    onChange={handleRegister}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Label>Lastname</Form.Label>
+                                <Form.Control
+                                    name="lastName"
+                                    value={registerValues.lastName}
+                                    type="text"
+                                    placeholder="Enter lastName"
+                                    onChange={handleRegister}
+                                />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    {registerError.fullname && <small className="error-tag">{registerError.fullname}</small>}
+                    <br />
+                    <Form.Group controlId="formBasicEmail">
+
+                        <Row>
+                            <Col>
+                                <Form.Label>Password</Form.Label>
+                                <div className="pass-wrapper">
+                                    <Form.Control
+                                        name="password"
+                                        value={registerValues.password}
+                                        type={passwordShow.pass ? "text" : "password"}
+                                        placeholder="Enter Password"
+                                        onChange={handleRegister}
+                                    />
+                                    <i onClick={() => togglePassword("pass")}>
+                                        {passwordShow.pass ? eye : eyeSlash}
+                                    </i>
+                                </div>
+                            </Col>
+
+                            <Col>
+                                <Form.Label>Confirm Password</Form.Label>
+                                <div className="pass-wrapper">
+                                    <Form.Control
+                                        name="confirmpass"
+                                        value={registerValues.confirmpass}
+                                        type={passwordShow.cpass ? "text" : "password"}
+                                        placeholder="Confirm Password"
+                                        onChange={handleRegister}
+                                    />
+                                    <i onClick={() => togglePassword("cpass")}>
+                                        {passwordShow.cpass ? eye : eyeSlash}
+                                    </i>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    {registerError.password && <small className="error-tag">{registerError.password}</small>}
+                    {/* <Form.Group controlId="formBasicEmail">
                         <Form.Label>Phone</Form.Label>
                         <Form.Control
                             name="phone"
@@ -109,14 +200,14 @@ function RegisterForm(props) {
                             onChange={handleRegister}
                         />
                     </Form.Group>
-                    {registerError.phone && <small className="error-tag">{registerError.phone}</small>}
+                    {registerError.phone && <small className="error-tag">{registerError.phone}</small>} */}
                     <br />
                     <Form.Group controlId="formFileSm">
                         <Form.File
                             onChange={handleFile}
                             type="file"
                             accept="image/png, image/jpeg"
-                            name="image"
+                        // name="image"
                         // required
                         />
                     </Form.Group>
