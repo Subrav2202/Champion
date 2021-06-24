@@ -4,12 +4,6 @@
     outline: 0;
     box-shadow: none;
 }
-.accordion-header,.accordion-header:hover{
-    color:black;
-    background-color: white;
-    @include valign;
-    justify-content: space-around;
-}
 // .maincontent{
 //     --bs-gutter-x:0;
 //     }

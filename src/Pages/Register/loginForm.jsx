@@ -5,6 +5,7 @@ import { eye, eyeSlash } from "../constant";
 import validate from './validate'
 import lock from "../../Assets/lock.png";
 import { useHistory } from 'react-router';
+import Axios from "axios"
 
 function Loginform(props) {
   const history = useHistory()
@@ -14,7 +15,7 @@ function Loginform(props) {
   const [loginValues, setLoginValues] = useState({
     loginemail: "",
     password: "",
-    role: "Employee"
+    // role: "Employee"
   });
 
   const handleLogin = (e) => {
@@ -28,6 +29,19 @@ function Loginform(props) {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
+      Axios.post("http://localhost:3000/user/login",loginValues,{
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then((res) => {
+            console.log(res)
+            alert(res.status)
+        })
+        .catch((err) => {
+            console.log(err)
+            alert(err)
+        })
       history.push("/dashboard")
     }
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0 && rememberMe === "checked") {
@@ -40,7 +54,7 @@ function Loginform(props) {
   };
 
   const togglePassword = () => {
-    setPasswordShow(passwordShow ? false : true);
+    setPasswordShow(!passwordShow);
   };
 
   const validateOnType = () => {
@@ -59,7 +73,7 @@ function Loginform(props) {
         </div>
         <hr />
         <Form onSubmit={handleLoginSubmit} onKeyUp={validateOnType}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group controlId="formBasicloginemail">
             <Form.Label>Email</Form.Label>
             <Form.Control
               name="loginemail"

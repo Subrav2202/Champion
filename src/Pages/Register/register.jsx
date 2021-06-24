@@ -18,7 +18,7 @@ function Register() {
       <Row style={{ width: "100%" }}>
         <Col md={6} className="colwrapper">
           <div className="champwrapper">
-            <img className="champs" src={champion} />
+            <img className="champs" src={champion} alt="champion"/>
             <Card.Body>
               <Card.Text className="champbody">
                 A champion is someone who gets up when he can't.

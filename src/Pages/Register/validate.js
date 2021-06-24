@@ -1,27 +1,38 @@
 export default function validate(val,isregistered) {
     let errors = {}
     
-    //Email Validation
     if (!isregistered) {
         //Register Validation
-        if (val.fullname === '') {
+        if(val.email === ''){
+            errors.email = "Please Enter Email "
+        }
+        else if(!/^(([^<>!@#$%&^*()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(val.email)) {
+            errors.email = "Please Enter Correct Email Address"
+        }
+        if (val.firstName && val.lastName === '') {
             errors.fullname = "Please Enter Fullname"
         }
-        else if (!/^[a-zA-Z\s]*$/.test(val.fullname)) {
+        else if (!/^[a-zA-Z\s]*$/.test(val.firstName)) {
             errors.fullname = "Name should only be Alphabets"
         }
-        if(val.registeremail === ''){
-            errors.registeremail = "Please Enter Email "
+        else if (!/^[a-zA-Z\s]*$/.test(val.lastName)) {
+            errors.fullname = "Name should only be Alphabets"
         }
-        else if(!/^(([^<>!@#$%&^*()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(val.registeremail)) {
-            errors.registeremail = "Please Enter Correct Email Address"
+        if(val.password === ''){
+            errors.password = "Please Enter Password "
         }
-        if (val.phone === '') {
-            errors.phone = "Please Enter Phone number"
+        else if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val.password)){
+            errors.password = "Minimum eight characters, at least one letter and one number"
         }
-        else if (!/^[0-9]{10,10}$/.test(val.phone)) {
-            errors.phone = "Phone number should be of length 10"
+        else if (val.password !== val.confirmpass) {
+            errors.password = "Password doesn't Match"
         }
+        // if (val.phone === '') {
+        //     errors.phone = "Please Enter Phone number"
+        // }
+        // else if (!/^[0-9]{10,10}$/.test(val.phone)) {
+        //     errors.phone = "Phone number should be of length 10"
+        // }
     }
     else {
         //Login Validation
