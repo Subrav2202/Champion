@@ -3,8 +3,8 @@ import { SidebarAdminData } from "./sideBarData";
 import { SidebarTLData } from "./sideBarData";
 import { SidebarEmpData } from "./sideBarData";
 import "./sideBarStyle.scss";
-import { FaRegWindowClose } from "react-icons/fa"
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineAlignRight } from "react-icons/ai"
+import { AiOutlineAlignLeft } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 function SideBar({ collapse, setCollapse }) {
@@ -27,7 +27,7 @@ function SideBar({ collapse, setCollapse }) {
         collapse ?
           <div className="sidebarwrapper">
             <div className="sidebarheader">
-              <AiOutlineMenu onClick={setCollapse} />
+              <AiOutlineAlignLeft onClick={setCollapse} />
             </div>
             {data && data.map((item, index) => {
               return (
@@ -43,7 +43,7 @@ function SideBar({ collapse, setCollapse }) {
           <div className="sidebarwrapper">
             <div className="sidebarheader">
               <h3>NeoSOFT</h3>
-              <FaRegWindowClose onClick={setCollapse} />
+              <AiOutlineAlignRight onClick={setCollapse} />
             </div>
             {data && data.map((item, index) => {
               return (
