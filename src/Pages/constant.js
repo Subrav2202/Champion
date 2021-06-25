@@ -9,3 +9,5 @@ export const margintop = () => {
     let value=Math.floor(Math.random() * (150- 20 + 1)) + 20;
     return value;
 }
+
+export const baseUrl="http://localhost:3000"

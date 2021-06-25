@@ -6,9 +6,12 @@ import validate from './validate'
 import lock from "../../Assets/lock.png";
 import { useHistory } from 'react-router';
 import Axios from "axios"
+import {useSelector, useDispatch} from 'react-redux'
+import {postUsers} from '../../Storage/Actions'
 
 function Loginform(props) {
   const history = useHistory()
+  const dispatch = useDispatch()
   const [rememberMe, setRememberMe] = useState("unchecked");
   const [passwordShow, setPasswordShow] = useState(false);
   const [loginError, setLoginError] = useState({})
@@ -35,14 +38,13 @@ function Loginform(props) {
         }
     })
         .then((res) => {
-            console.log(res)
-            alert(res.status)
+          dispatch(postUsers(res.data))
+          history.push("/dashboard")
         })
         .catch((err) => {
             console.log(err)
             alert(err)
         })
-      history.push("/dashboard")
     }
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0 && rememberMe === "checked") {
       localStorage.setItem("LoginData", JSON.stringify(loginValues))
