@@ -223,14 +223,16 @@ function RegisterForm(props) {
                             onChange={handleRegister}
                         >
                             <option>Select Role</option>
+                            <option value="ADMIN">Admin</option>
                             <option value="CTO">CTO</option>
-                            <option value="Director">Director</option>
-                            <option value="Team Lead">Team Lead</option>
-                            <option value="Associate Team Lead">
+                            <option value="DIRECTOR">Director</option>
+                            <option value="DELIVERY_MANAGER">DELIVERY MANAGER</option>
+                            <option value="TEAM_LEAD">Team Lead</option>
+                            <option value="ASSOCIATE_TEAM_LEAD">
                                 Associate Team Lead
                     </option>
-                            <option value="Mentor">Mentor</option>
-                            <option value="Developer">Developer</option>
+                            <option value="MENTOR">Mentor</option>
+                            <option value="DEVELOPER">Developer</option>
                         </Form.Control>
                     </Form.Group>
                     <hr />

@@ -6,12 +6,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import HistoryEmp from "./HistoryEmp";
 import Header from "../Header/Header";
 import HistoryTL from "./HistoryTL";
+import { useSelector } from "react-redux";
 // import EmployeeCard from "./employeeCard";
 
 function History() {
   const [collapse, setCollapse] = useState(false);
-  const logindata = JSON.parse(localStorage.getItem("LoginData"));
-  const role = logindata.role;
+  const currentUser = useSelector((state) => state.users);
+  // const logindata = JSON.parse(localStorage.getItem("LoginData"));
+  // const role = logindata.role;
 
   return (
     <>
@@ -21,7 +23,7 @@ function History() {
             <HistoryGridHeader collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
-            <HistoryGridBody role={role}/>
+            <HistoryGridBody role={currentUser.role}/>
           </Col>
         </Row>
       </Container>
@@ -49,8 +51,8 @@ function HistoryGridBody({ role }) {
         <Container>
           <Row>
             <Col md={{ span: 10, offset: 1 }}>
-              {role === "Employee" && <HistoryEmp />}
-              {role === "TL" && <HistoryTL/>}
+              {role === "DEVELOPER" && <HistoryEmp />}
+              {role  === "TEAM_LEAD" && <HistoryTL/>}
             </Col>
           </Row>
         </Container>

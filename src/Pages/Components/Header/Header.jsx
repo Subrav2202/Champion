@@ -12,7 +12,7 @@ function Header(props) {
   // const data = localStorage.getItem("user");
   // const info = JSON.parse(data);
   const currentUser = useSelector((state) => state.users);
-  // let source=`${baseUrl}/user/cartoon4_8b35.jpg`
+let userrole=currentUser.role.replace(/_/g," ").toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ');
     let source=`${baseUrl}/user/${currentUser.avatar}`
   console.log(source)
   console.log(currentUser)
@@ -21,7 +21,7 @@ function Header(props) {
     localStorage.removeItem("LoginData");
     history.push("/register");
   };
-  // console.log(`${baseUrl}/user/${currentUser.avatar}`)
+
   return (
     <div className="header px-4">
       <h4 className="headerpagename">{props.title}</h4>
@@ -34,7 +34,10 @@ function Header(props) {
         //   popperConfig={{ placement: 'bottom-end' }}
           overlay={
             <Popover id="popover-basic">
-              <Popover.Title as="div"><h5>{currentUser.firstName} {currentUser.lastName}</h5><p>{currentUser.email}</p></Popover.Title>
+              <Popover.Title as="div"><h5>{currentUser.firstName} {currentUser.lastName}</h5>
+              <p>{currentUser.email}</p>
+              <p>{userrole}</p>
+              </Popover.Title>
               <Popover.Content>
                 <Button variant="danger" size="sm" onClick={handleLogout}>Logout</Button>
               </Popover.Content>
