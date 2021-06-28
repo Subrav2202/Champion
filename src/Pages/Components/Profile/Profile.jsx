@@ -12,7 +12,7 @@ function Profile() {
     <Container className="main-container" fluid>
       <Row className="side-nav p-0" style={{ position: "relative" }}>
         <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
-          <ProfileGridHeader collapse={collapse} setCollapse={setCollapse} />
+          <ProfileGridSidebar collapse={collapse} setCollapse={setCollapse} />
         </Col>
         <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1" style={{height: '100vh'}}>
           <ProfileGridBody />
@@ -38,7 +38,7 @@ function ProfileGridBody() {
   )
 }
 
-function ProfileGridHeader({ collapse, setCollapse }) {
+function ProfileGridSidebar({ collapse, setCollapse }) {
   return (
     <>
       <SideBar

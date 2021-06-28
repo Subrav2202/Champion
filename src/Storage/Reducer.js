@@ -12,6 +12,7 @@ const Reducer = function (state = initialstate, action) {
       };
     case constants.saveUser:
       return {
+        ...state,
         users: action.payload,
       };
     case constants.updateUser:

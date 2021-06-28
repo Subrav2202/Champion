@@ -22,7 +22,7 @@ function Dashboard() {
         {/* <Row className="side-nav p-0 maincontent"> */}
         <Row className="side-nav p-0" style={{ position: "relative" }}>
           <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
-            <DashboardGridHeader collapse={collapse} setCollapse={setCollapse} />
+            <DashboardGridSidebar collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
             <DashboardGridBody month={month} setmonth={(val) => setmonth(val)} />
@@ -35,7 +35,7 @@ function Dashboard() {
 
 export default Dashboard;
 
-function DashboardGridHeader({ collapse, setCollapse }) {
+function DashboardGridSidebar({ collapse, setCollapse }) {
 
   return (
     <SideBar

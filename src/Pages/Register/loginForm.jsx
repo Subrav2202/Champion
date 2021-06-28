@@ -6,8 +6,8 @@ import validate from './validate'
 import lock from "../../Assets/lock.png";
 import { useHistory } from 'react-router';
 import Axios from "axios"
-import {useSelector, useDispatch} from 'react-redux'
-import {postUsers} from '../../Storage/Actions'
+import { useSelector, useDispatch } from 'react-redux'
+import { postUsers } from '../../Storage/Actions'
 
 function Loginform(props) {
   const history = useHistory()
@@ -32,23 +32,23 @@ function Loginform(props) {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
-      Axios.post("http://localhost:3000/user/login",loginValues,{
+      Axios.post("http://localhost:3000/user/login", loginValues, {
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         }
-    })
+      })
         .then((res) => {
           dispatch(postUsers(res.data))
           history.push("/dashboard")
         })
         .catch((err) => {
-            console.log(err)
-            alert(err)
+          console.log(err)
+          alert(err)
         })
     }
-    if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0 && rememberMe === "checked") {
-      localStorage.setItem("LoginData", JSON.stringify(loginValues))
-    }
+    // if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0 && rememberMe === "checked") {
+    //   localStorage.setItem("LoginData", JSON.stringify(loginValues))
+    // }
   };
 
   const handleRememberMe = (e) => {

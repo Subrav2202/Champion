@@ -20,7 +20,7 @@ function History() {
       <Container fluid className="main-container">
       <Row className="side-nav p-0" style={{ position: "relative" }}>
       <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed" }}>
-            <HistoryGridHeader collapse={collapse} setCollapse={setCollapse} />
+            <HistoryGridSidebar collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
             <HistoryGridBody role={currentUser.role}/>
@@ -33,7 +33,7 @@ function History() {
 
 export default History;
 
-function HistoryGridHeader({ collapse, setCollapse }) {
+function HistoryGridSidebar({ collapse, setCollapse }) {
   return (
     <SideBar
       collapse={collapse}

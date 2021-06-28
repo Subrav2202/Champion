@@ -6,36 +6,35 @@ import { MdEmail, MdPhone } from "react-icons/md";
 import { BsPeopleCircle } from "react-icons/bs";
 import ProfileModal from "./profileModal";
 import DefaultProfileImg from "../../../Assets/profile.jpeg"
+import StateContainer from '../../../Storage/StateContainer'
 
 function ProfileCard() {
   const [show, setshow] = useState(false);
-  const data = localStorage.getItem("user");
-  const info = JSON.parse(data);
-
+  const { currentUser, source, userrole } = StateContainer();
   return (
     <>
       <Card className="profile-cardWrapper">
         <Card.Header className="imagealign">
           {/* <Card.Img variant="top" src="https://source.unsplash.com/random" className="cardImage" /> */}
-          <Card.Img variant="top" src={DefaultProfileImg} alt="profileImg" className="cardImage" />
+          <Card.Img variant="top" src={source ? source : DefaultProfileImg} alt="profileImg" className="cardImage" />
         </Card.Header>
 
         <Card.Body className="w-100">
           <div className="body">
             <IoIosPerson className="bodyicons" />
-            <Card.Text className="bodyname">{info.fullname}</Card.Text>
+            <Card.Text className="bodyname">{currentUser.firstName} {currentUser.lastName}</Card.Text>
           </div>
           <div className="body">
             <MdEmail className="bodyicons" />
-            <Card.Text className="bodyname">{info.registeremail}</Card.Text>
+            <Card.Text className="bodyname">{currentUser.email}</Card.Text>
           </div>
-          <div className="body">
+          {/* <div className="body">
             <MdPhone className="bodyicons" />
             <Card.Text className="bodyname">{info.phone}</Card.Text>
-          </div>
+          </div> */}
           <div className="body">
             <BsPeopleCircle className="bodyicons" />
-            <Card.Text className="bodyname">{info.role}</Card.Text>
+            <Card.Text className="bodyname">{userrole}</Card.Text>
           </div>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-center w-100 profile-card-footer">

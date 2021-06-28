@@ -25,7 +25,7 @@ function Employee() {
         </Row> */}
         <Row className="side-nav p-0" style={{ position: "relative"}}>
           <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed"}}>
-            <EmployeeGridHeader collapse={collapse} setCollapse={setCollapse} />
+            <EmployeeGridSidebar collapse={collapse} setCollapse={setCollapse} />
           </Col>
           <Col md={{ span: collapse ? 11 : 10, offset: collapse ? 1 : 2 }} className="px-1">
             <EmployeeGridBody />
@@ -38,7 +38,7 @@ function Employee() {
 
 export default Employee;
 
-function EmployeeGridHeader({ collapse, setCollapse }) {
+function EmployeeGridSidebar({ collapse, setCollapse }) {
   return (
     <SideBar
       collapse={collapse}

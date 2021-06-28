@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import StateContainer from '../../../Storage/StateContainer'
 
 function ProfileModal(props) {
-  const data = localStorage.getItem("user");
-  const info = JSON.parse(data);
+  const { currentUser } = StateContainer();
+  const [updatedValues, setUpdatedValues] = useState({
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    role: currentUser.role
+  })
 
-  const handleRegister = () => {
-    console.log("hello")
+  const handleEditProfile = (e) => {
+    const value = e.target.value;
+    setUpdatedValues((updatedValues) => {
+      return {
+        ...updatedValues,
+        [e.target.name]: value,
+      };
+    });
   }
   return (
     <>
       <Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         className="profile-modal-wrapper"
@@ -22,14 +34,25 @@ function ProfileModal(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Full Name</Form.Label>
+            <Form.Group>
+              <Form.Label>FirstName</Form.Label>
               <Form.Control
-                name="fullname"
-                defaultValue={info.fullname}
+                name="firstName"
+                defaultValue={currentUser.firstName}
                 type="text"
-                placeholder="Enter Full Name"
-                onChange={handleRegister}
+                placeholder="Enter Firstname"
+                onChange={handleEditProfile}
+              />
+            </Form.Group>
+            <br />
+            <Form.Group>
+              <Form.Label>LastName</Form.Label>
+              <Form.Control
+                name="lastName"
+                defaultValue={currentUser.lastName}
+                type="text"
+                placeholder="Enter Lastname"
+                onChange={handleEditProfile}
               />
             </Form.Group>
             {/* {registerError.fullname && <small className="error-tag">{registerError.fullname}</small>} */}
@@ -37,15 +60,15 @@ function ProfileModal(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                name="registeremail"
-                defaultValue={info.registeremail}
+                name="email"
+                defaultValue={currentUser.email}
                 type="email"
-                placeholder="Enter email"
-                onChange={handleRegister}
+                placeholder="Enter Email"
+                onChange={handleEditProfile}
               />
             </Form.Group>
             {/* {registerError.registeremail && <small className="error-tag">{registerError.registeremail}</small>} */}
-            <br />
+            {/* <br />
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Phone</Form.Label>
               <Form.Control
@@ -54,9 +77,9 @@ function ProfileModal(props) {
                 defaultValue={info.phone}
                 type="number"
                 placeholder="Enter Phone Number"
-                onChange={handleRegister}
+                onChange={handleEditProfile}
               />
-            </Form.Group>
+            </Form.Group> */}
             {/* {registerError.phone && <small className="error-tag">{registerError.phone}</small>} */}
             <br />
             <Form.Group>
@@ -70,20 +93,23 @@ function ProfileModal(props) {
             <br />
             <Form.Group>
               <Form.Control
+                className="w-50 p-2"
                 name="role"
                 as="select"
                 custom
-                onChange={handleRegister}
+                onChange={handleEditProfile}
               >
-                <option value="Select">Select</option>
+                <option>Select Role</option>
+                <option value="ADMIN">Admin</option>
                 <option value="CTO">CTO</option>
-                <option value="Director">Director</option>
-                <option value="Team Lead">Team Lead</option>
-                <option value="Associate Team Lead">
+                <option value="DIRECTOR">Director</option>
+                <option value="DELIVERY_MANAGER">DELIVERY MANAGER</option>
+                <option value="TEAM_LEAD">Team Lead</option>
+                <option value="ASSOCIATE_TEAM_LEAD">
                   Associate Team Lead
                     </option>
-                <option value="Mentor">Mentor</option>
-                <option value="Developer">Developer</option>
+                <option value="MENTOR">Mentor</option>
+                <option value="DEVELOPER">Developer</option>
               </Form.Control>
             </Form.Group>
             <hr />
