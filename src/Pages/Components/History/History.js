@@ -47,7 +47,7 @@ function HistoryGridBody({ role }) {
   return (
     <>
       <Header title="History" />
-      <div className="d-flex my-3 px-2">
+      <div className="d-flex my-3 px-2"  style={{paddingTop: "70px"}}>
         <Container>
           <Row>
             <Col md={{ span: 10, offset: 1 }}>

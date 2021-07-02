@@ -32,7 +32,7 @@ function RolesGridBody() {
     return (
         <>
             <Header title="Roles" />
-            <div className="d-flex my-3 px-2">
+            <div className="d-flex my-3 px-2" style={{paddingTop: "70px"}}>
                 <Roles />
             </div>
         </>

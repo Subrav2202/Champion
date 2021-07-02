@@ -12,17 +12,6 @@ function Employee() {
   return (
     <>
       <Container fluid className="main-container">
-        {/* <Row className="top-nav">
-          <Col>
-            <div className="employee-navbar">
-              <span>NeoSOFT</span>
-              <AiOutlineMenu />
-            </div>
-            <div>
-              <EmployeeGridBody />
-            </div>
-          </Col>
-        </Row> */}
         <Row className="side-nav p-0" style={{ position: "relative"}}>
           <Col md={collapse ? 1 : 2} className="slide" style={{ position: "fixed"}}>
             <EmployeeGridSidebar collapse={collapse} setCollapse={setCollapse} />
@@ -51,7 +40,7 @@ function EmployeeGridBody() {
   return (
     <>
       <Header title="Employee details" />
-      <div className="d-flex my-3 px-2">
+      <div className="d-flex my-3 px-2" style={{paddingTop: "70px"}}>
         <Container fluid>
           <Row className="gy-3 gx-4 justify-content-center">
             <Col md={4} sm={6}>

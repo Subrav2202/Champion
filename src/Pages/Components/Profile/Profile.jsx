@@ -29,7 +29,7 @@ function ProfileGridBody() {
   return (
     <>
       <Header title="Profile" />
-      <div style={{ height: "85%" }} className="d-flex justify-content-center align-items-center">
+      <div style={{ height: "85%",paddingTop: "70px"}} className="d-flex justify-content-center align-items-center">
         {/* <div className="d-flex justify-content-center align-items-center"> */}
         <ProfileCard />
         {/* </div> */}

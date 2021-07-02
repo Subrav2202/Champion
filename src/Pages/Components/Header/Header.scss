@@ -1,4 +1,5 @@
 @import "../../mixin";
+@import "../../var";
 .popover {
   .arrow {
     background: transparent !important;
@@ -27,4 +28,8 @@
   color:#6CA6CD;
   font-family: Verdana;
   justify-content: space-around;
+}
+
+.responsive-nav{
+  background: $sidebarHeaderColor;
 }

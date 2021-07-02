@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import StateContainer from '../../../Storage/StateContainer'
+import { baseUrl } from "../../constant";
 
 function ProfileModal(props) {
   const { currentUser } = StateContainer();
@@ -19,6 +21,15 @@ function ProfileModal(props) {
         [e.target.name]: value,
       };
     });
+  }
+
+  const EditProfileSubmit = () => {
+    axios.patch(`${baseUrl}/user/${currentUser.id}`,updatedValues,{
+      headers: {
+        Authorization: currentUser.token
+      }
+    })
+    props.onHide()
   }
   return (
     <>
@@ -119,7 +130,7 @@ function ProfileModal(props) {
           <Button variant="outline-danger" onClick={props.onHide}>
             Close
           </Button>
-          <Button variant="outline-success">Submit</Button>
+          <Button variant="outline-success" onClick={EditProfileSubmit}>Submit</Button>
         </Modal.Footer>
       </Modal>
     </>

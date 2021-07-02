@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./regStyle.scss";
 import lock from "../../Assets/lock.png";
-import { eye, eyeSlash } from "../constant";
+import { baseUrl, eye, eyeSlash } from "../constant";
 import validate from './validate'
 // import { useHistory } from "react-router-dom";
 import {
@@ -9,13 +9,15 @@ import {
     Button,
     Card,
     Row,
-    Col
+    Col,
+    Toast
 } from "react-bootstrap";
 import axios from "axios";
 
 function RegisterForm(props) {
     // const history = useHistory()
     const [registerError, setRegisterError] = useState({})
+    const [show, setShow] = useState(false);
     const [imageFile, setImageFile] = useState()
     const [passwordShow, setPasswordShow] = useState({
         pass: false,
@@ -54,25 +56,26 @@ function RegisterForm(props) {
             // localStorage.setItem("user", JSON.stringify(registerValues))
             const formData = new FormData();
             formData.append('avatar', imageFile)
-            axios.post("http://localhost:3000/user/upload", formData, {
+            axios.post(`${baseUrl}/user/upload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
             })
                 .then((res) => {
                     console.log(res.data)
-                    let temp=registerValues;
+                    let temp = registerValues;
                     delete temp["confirmpass"]
-                    temp.avatar=res.data; 
-                    setRegisterValues(temp)   
+                    temp.avatar = res.data;
+                    setRegisterValues(temp)
                     console.log(registerValues)
-                    axios.post("http://localhost:3000/user/register",registerValues,{
+                    axios.post(`${baseUrl}/user/register`, registerValues, {
                         headers: {
                             "Content-Type": "application/json"
                         }
                     })
                         .then((res) => {
                             console.log(res)
+                            setShow(true)
                         })
                         .catch((err) => {
                             console.log(err)
@@ -84,7 +87,7 @@ function RegisterForm(props) {
             props.setisregister();
         }
     };
-// console.log(passwordShow)
+    // console.log(passwordShow)
     const validateOnType = () => {
         setRegisterError(validate(registerValues, props.isregistered))
     }
@@ -93,13 +96,13 @@ function RegisterForm(props) {
         if (passtype === "pass") {
             setPasswordShow((value) => {
                 let pass = !value.pass;
-                return { ...value,pass }
+                return { ...value, pass }
             });
         }
         else {
             setPasswordShow((value) => {
                 let cpass = !value.cpass;
-                return { ...value,cpass }
+                return { ...value, cpass }
             });
         }
     };
@@ -209,8 +212,8 @@ function RegisterForm(props) {
                             type="file"
                             accept="image/png, image/jpeg"
                             required
-                        // name="image"
-                        // required
+                            // name="image"
+                            required
                         />
                     </Form.Group>
                     <br />
@@ -249,6 +252,13 @@ function RegisterForm(props) {
                     </div>
                 </Form>
             </Card>
+            <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide style={{ position: "absolute", top: 10, right: 10 }}>
+                <Toast.Header>
+                    <strong className="mr-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                </Toast.Header>
+                <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+            </Toast>
         </>
     )
 }

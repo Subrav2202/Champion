@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Toast } from 'react-bootstrap';
 import "./regStyle.scss";
-import { eye, eyeSlash } from "../constant";
+import { baseUrl, eye, eyeSlash } from "../constant";
 import validate from './validate'
 import lock from "../../Assets/lock.png";
 import { useHistory } from 'react-router';
@@ -11,6 +11,7 @@ import { postUsers } from '../../Storage/Actions'
 
 function Loginform(props) {
   const history = useHistory()
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch()
   const [rememberMe, setRememberMe] = useState("unchecked");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -32,13 +33,14 @@ function Loginform(props) {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (loginValues.loginemail !== "" && loginValues.password !== "" && Object.keys(loginError).length === 0) {
-      Axios.post("http://localhost:3000/user/login", loginValues, {
+      Axios.post(`${baseUrl}/user/login`, loginValues, {
         headers: {
           "Content-Type": "application/json"
         }
       })
         .then((res) => {
           dispatch(postUsers(res.data))
+          setShow(true)
           history.push("/dashboard")
         })
         .catch((err) => {
@@ -127,6 +129,14 @@ function Loginform(props) {
           </div>
         </Form>
       </Card>
+
+        {/* <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide style={{position: "absolute",top:10,right: 10,backgroundColor: "#4BB543"}}>
+          <Toast.Header style={{backgroundColor: "#4BB543"}}>
+            <strong className="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+        </Toast> */}
     </>
   )
 }

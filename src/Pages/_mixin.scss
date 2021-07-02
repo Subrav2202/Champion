@@ -1,11 +1,10 @@
-
 @mixin vhalign {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 @mixin valign {
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
@@ -15,33 +14,39 @@
     align-items: center;
     padding: 5%;
     .bodyicons {
-      flex: 2;
-      display: flex;
-      justify-content: center;
+        flex: 2;
+        display: flex;
+        justify-content: center;
     }
     .bodyname {
-      flex: 4;
-      display: flex;
-      justify-content: flex-start;
+        flex: 4;
+        display: flex;
+        justify-content: flex-start;
     }
-  }
+}
 
 @mixin GridContainer {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     // width:100vw;
 }
 
 @mixin GridHeader {
     @include valign;
-    justify-content: space-between;
+    position: fixed;
+    width: inherit;
+    z-index: 2;
+    // justify-content: space-between;
     // padding-left:2% ;
-    background-color:#f2f2f2;
-    height:70px;
+    background-color: #f2f2f2;
+    height: 70px;
+    @media (max-width: 768px) {
+      display: none;
+    }
 }
 
 @mixin modal-header {
-  background: rgb(214, 105, 105);
+    background: rgb(214, 105, 105);
     background: linear-gradient(
         90deg,
         rgba(214, 105, 105, 1) 23%,
@@ -50,20 +55,18 @@
     );
 }
 
-
 @mixin card-animation {
-  width: 5vw;
-  height: 40vh;
-  position:relative;
-  opacity: 0.5;
-  padding:$card-padding;
-  background-color: white;
-  border: 1px solid rgb(128, 128, 128) !important;
-  transition: all 1s ease-in;
-  box-sizing:content-box;
+    width: 5vw;
+    height: 40vh;
+    position: relative;
+    opacity: 0.5;
+    padding: $card-padding;
+    background-color: white;
+    border: 1px solid rgb(128, 128, 128) !important;
+    transition: all 1s ease-in;
+    box-sizing: content-box;
 }
 
 @mixin sidebar-slide {
-  // transition: all 0.1s ease-in-out;
-} 
-  
+    // transition: all 0.1s ease-in-out;
+}

@@ -1,51 +1,59 @@
 @import "../../mixin";
 
-  .profile-cardWrapper {
+.profile-cardWrapper {
     position: relative;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.815);
     @include valign;
     border-radius: 5%;
     width: 50%;
     // background-color: #231E39;
-    background: #FC5C7D;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    background: #fc5c7d; 
+    background: -webkit-linear-gradient(
+        to right,
+        #6a82fb,
+        #fc5c7d
+    );
+    background: linear-gradient(
+        to right,
+        #6a82fb,
+        #fc5c7d
+    ); 
+
     color: white;
     .imagealign {
-      @include vhalign;
-      width:100%;
-      border-bottom: rgb(236, 227, 227) solid 1px;
-      .cardImage {
-        width: 31%;
-        height: 24vh;
-        border-radius: 50%;
-        border: 5px solid white;
-      }
+        @include vhalign;
+        min-width: 100%;
+        border-bottom: rgb(236, 227, 227) solid 1px;
+        .cardImage {
+            width: 24vh;
+            height: 24vh;
+            border-radius: 50%;
+            border: 5px solid white;
+        }
     }
     .body {
-      @include vhalign;
-      justify-content: space-around;
-      padding:3%;
-      .bodyicons {
-        flex: 2;
-        display: flex;
-        justify-content: center;
-      }
-      .bodyname {
-        flex: 4;
-        display: flex;
-        justify-content: flex-start;
-      }
+        @include vhalign;
+        justify-content: space-around;
+        padding: 3%;
+        .bodyicons {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+        .bodyname {
+            flex: 4;
+            display: flex;
+            justify-content: flex-start;
+        }
     }
-    .profile-card-footer{
-      border-top: rgb(236, 227, 227) solid 1px;
+    .profile-card-footer {
+        border-top: rgb(236, 227, 227) solid 1px;
     }
-  }
-  .profile-modal-header {
+}
+.profile-modal-header {
     @include modal-header;
-  }
+}
 
-  // .profile-modal-wrapper{
-  //   background-color: black;
-  // }
+// .profile-modal-wrapper{
+//   background-color: black;
+// }

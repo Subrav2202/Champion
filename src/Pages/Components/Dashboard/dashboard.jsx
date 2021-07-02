@@ -50,9 +50,8 @@ function DashboardGridBody({ setmonth, month }) {
   console.log("outside",togglecontrol)
   return (
     <>
-      {/* style={{width:"inherit",position:"absolute"}} */}
       <Header title="Dashboard" />
-      <div className="d-flex my-3 px-2" >
+      <div className="d-flex my-3 px-2"  style={{paddingTop: "70px"}}>
         <Container fluid className="p-0">
           <Row>
             <Col md={{ span: 7 }}>
@@ -60,15 +59,15 @@ function DashboardGridBody({ setmonth, month }) {
               <Card style={{position: "relative"}}>
                 <Accordion style={{ position: "absolute",zIndex: "1",right: "2%",top: "2%" }}>
                   <Card>
-                  <Accordion.Toggle className="accordion-header" as={Button} variant="default" eventKey="0">
-                      <div onClick={() => { settogglecontrol(true); console.log("toggle",togglecontrol)}}>{month ? month : "Months"} <BsChevronDown /></div>
+                  <Accordion.Toggle className="accordion-header" as={Button} variant="default" eventKey="0" onClick={() => { settogglecontrol(true); console.log("toggle",togglecontrol)}}>
+                      <div>{month ? month : "Months"} <BsChevronDown /></div>
                     </Accordion.Toggle>
                     {
                       togglecontrol &&
                       chartsarray.map((item, index) => {
                         return (
                           <Accordion.Collapse eventKey="0" key={index} style={{ cursor: "pointer"}} onClick={() => {settogglecontrol(false);console.log("collapse",togglecontrol)}}>
-                            <Card.Body onClick={() => setmonth(item.month) }>{item.month}</Card.Body>
+                            <Card.Body  className="accordian-body" onClick={() => setmonth(item.month) }>{item.month}</Card.Body>
                           </Accordion.Collapse>
                         )
                       })

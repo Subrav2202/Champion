@@ -1,15 +1,33 @@
 @import "../mixin";
 
-.main-container{
-    @include GridContainer
+.main-container {
+    @include GridContainer;
 }
-.header{
-    @include GridHeader
+.header {
+    @include GridHeader;
 }
 
 .slide {
     @include sidebar-slide;
 }
-.side-nav{
+.side-nav {
     --bs-gutter-x: 0;
+}
+
+@media (max-width: 768px) {
+    .slide {
+        display: none;
+    }
+    .responsive-nav {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .slide {
+        display: inline;
+    }
+    .responsive-nav {
+        display: none;
+    }
 }
